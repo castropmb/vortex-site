@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TÍTULO DO ARTIGO | Blog VORTEX</title>
+  <meta name="description" content="META DESCRIPTION — máx 160 caracteres. Descreva o conteúdo do artigo com palavras-chave relevantes." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://vortex-site-swart.vercel.app/blog/SLUG-DO-ARTIGO" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23000'/><polygon points='8,12 24,12 32,36 40,12 56,12 38,52 26,52' fill='%2300CFC0'/></svg>" />
+  <meta property="og:type"        content="article" />
+  <meta property="og:title"       content="TÍTULO DO ARTIGO | Blog VORTEX" />
+  <meta property="og:description" content="META DESCRIPTION" />
+  <meta property="og:url"         content="https://vortex-site-swart.vercel.app/blog/SLUG-DO-ARTIGO" />
+  <meta property="og:image"       content="https://vortex-site-swart.vercel.app/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "TÍTULO DO ARTIGO",
+    "description": "META DESCRIPTION",
+    "datePublished": "AAAA-MM-DD",
+    "dateModified":  "AAAA-MM-DD",
+    "author": { "@type": "Organization", "name": "VORTEX — Grupo PBC TECH" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "VORTEX",
+      "logo": { "@type": "ImageObject", "url": "https://vortex-site-swart.vercel.app/logo.png" }
+    },
+    "url": "https://vortex-site-swart.vercel.app/blog/SLUG-DO-ARTIGO",
+    "mainEntityOfPage": "https://vortex-site-swart.vercel.app/blog/SLUG-DO-ARTIGO"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root { --teal:#00CFC0; --black:#000; --dark:#080d0c; --card:#0d1412; --border:rgba(0,207,192,0.16); --gray:#6b8885; --white:#f0faf9; }
+    body { font-family:'Space Grotesk',sans-serif; background:var(--black); color:var(--white); line-height:1.7; }
+    a { color:var(--teal); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(0,0,0,0.88); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:70px; }
+    .nav-logo { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:0.1em; color:var(--white); }
+    .nav-logo img { height:52px; width:auto; mix-blend-mode:screen; }
+    .nav-back { font-size:0.82rem; color:var(--teal); border:1px solid var(--border); border-radius:8px; padding:7px 16px; }
+    .nav-back:hover { background:rgba(0,207,192,0.1); text-decoration:none; }
+    article { max-width:740px; margin:0 auto; padding:120px 24px 80px; }
+    .art-tag { font-size:0.65rem; font-weight:700; letter-spacing:0.18em; color:var(--teal); text-transform:uppercase; margin-bottom:10px; }
+    .art-meta { font-size:0.78rem; color:var(--gray); margin-bottom:24px; }
+    h1 { font-size:clamp(1.6rem,3.5vw,2.5rem); font-weight:700; line-height:1.25; margin-bottom:20px; }
+    .art-intro { font-size:1.05rem; color:rgba(240,250,249,0.75); margin-bottom:40px; padding-bottom:32px; border-bottom:1px solid var(--border); }
+    h2 { font-size:1.25rem; font-weight:700; color:var(--teal); margin:40px 0 14px; }
+    h3 { font-size:1rem; font-weight:700; margin:28px 0 10px; }
+    p { margin-bottom:18px; color:rgba(240,250,249,0.85); }
+    ul, ol { padding-left:22px; margin-bottom:18px; color:rgba(240,250,249,0.85); }
+    li { margin-bottom:8px; }
+    blockquote { border-left:3px solid var(--teal); padding:12px 20px; background:rgba(0,207,192,0.05); border-radius:0 8px 8px 0; margin:24px 0; font-style:italic; color:rgba(240,250,249,0.7); }
+    .highlight-box { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin:28px 0; }
+    .highlight-box strong { color:var(--teal); }
+    .cta-box { background:linear-gradient(135deg,rgba(0,207,192,0.1),rgba(0,207,192,0.04)); border:1px solid rgba(0,207,192,0.3); border-radius:16px; padding:32px; text-align:center; margin:52px 0 0; }
+    .cta-box h3 { font-size:1.2rem; margin-bottom:12px; color:var(--white); }
+    .cta-box p { color:var(--gray); margin-bottom:20px; }
+    .cta-btn { display:inline-block; background:var(--teal); color:#000; font-weight:700; font-size:0.88rem; padding:12px 28px; border-radius:8px; letter-spacing:0.06em; }
+    .cta-btn:hover { opacity:0.9; text-decoration:none; }
+    .blog-nav { display:flex; justify-content:space-between; gap:16px; margin-top:56px; padding-top:32px; border-top:1px solid var(--border); }
+    .blog-nav a { font-size:0.82rem; color:var(--gray); }
+    .blog-nav a:hover { color:var(--teal); }
+    footer { text-align:center; padding:40px 24px; border-top:1px solid var(--border); color:var(--gray); font-size:0.8rem; margin-top:40px; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo"><img src="/logo.png" alt="VORTEX" width="52" height="52" />VORTEX</a>
+  <a href="/blog" class="nav-back">← Blog</a>
+</nav>
+
+<article itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="art-tag">CATEGORIA</div><!-- ex: NR-36, ROI, RFID, GESTÃO -->
+  <div class="art-meta">
+    <time itemprop="datePublished" datetime="AAAA-MM-DD">DD Mês AAAA</time> · X min leitura · Por <span itemprop="author">Equipe VORTEX</span>
+  </div>
+
+  <h1 itemprop="headline">TÍTULO PRINCIPAL DO ARTIGO</h1>
+
+  <p class="art-intro" itemprop="description">
+    PARÁGRAFO DE ABERTURA — resuma em 2-3 frases o problema que o artigo resolve e por que o leitor deve continuar. Use a palavra-chave principal aqui.
+  </p>
+
+  <!-- ═══════════════════ CONTEÚDO ═══════════════════ -->
+
+  <h2>Subtítulo com palavra-chave</h2>
+  <p>Parágrafo de conteúdo...</p>
+
+  <div class="highlight-box">
+    <strong>Dado importante:</strong> Use esta caixa para destacar estatísticas, citações de lei ou pontos críticos.
+  </div>
+
+  <h2>Segundo tópico</h2>
+  <p>Mais conteúdo...</p>
+
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <blockquote>Citação relevante de lei, especialista ou dado de mercado.</blockquote>
+
+  <h2>Conclusão</h2>
+  <p>Resumo e call-to-action natural para o sistema VORTEX...</p>
+
+  <!-- ═══════════════════ CTA ═══════════════════ -->
+  <div class="cta-box">
+    <h3>Quer ver o VORTEX na sua operação?</h3>
+    <p>Agende uma demonstração gratuita e receba um cálculo de ROI personalizado para o seu frigorífico.</p>
+    <a href="/#demo" class="cta-btn">AGENDAR DEMONSTRAÇÃO GRATUITA</a>
+  </div>
+
+  <div class="blog-nav">
+    <a href="/blog">← Todos os artigos</a>
+    <a href="/#demo">Falar com especialista →</a>
+  </div>
+</article>
+
+<footer>
+  <p>© 2026 VORTEX — Grupo PBC TECH · Brasil RFID · <a href="/" style="color:var(--teal);">vortex-site-swart.vercel.app</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog VORTEX — NR-36, RFID e Controle de Pausas | Grupo PBC TECH</title>
+  <meta name="description" content="Conteúdo técnico e jurídico sobre NR-36, controle de pausas térmicas, RFID industrial e gestão de frigoríficos. Publicado 2x por semana pela equipe VORTEX." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://vortex-site-swart.vercel.app/blog" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23000'/><polygon points='8,12 24,12 32,36 40,12 56,12 38,52 26,52' fill='%2300CFC0'/></svg>" />
+  <meta property="og:title" content="Blog VORTEX — NR-36, RFID e Controle de Pausas" />
+  <meta property="og:description" content="Conteúdo técnico sobre NR-36, RFID industrial e gestão de frigoríficos." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --teal:#00CFC0; --black:#000; --dark:#080d0c; --card:#0d1412; --border:rgba(0,207,192,0.16); --gray:#6b8885; --white:#f0faf9; }
+    body { font-family:'Space Grotesk',sans-serif; background:var(--black); color:var(--white); line-height:1.6; }
+    a { color:inherit; text-decoration:none; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(0,0,0,0.85); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:70px; }
+    .nav-logo { display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.1rem; letter-spacing:0.1em; }
+    .nav-logo img { height:52px; width:auto; mix-blend-mode:screen; }
+    .nav-back { font-size:0.82rem; color:var(--teal); border:1px solid var(--border); border-radius:8px; padding:7px 16px; transition:background 0.2s; }
+    .nav-back:hover { background:rgba(0,207,192,0.1); }
+    main { padding:120px 24px 80px; max-width:1100px; margin:0 auto; }
+    .blog-hero { text-align:center; margin-bottom:64px; }
+    .sec-tag { display:inline-flex; align-items:center; gap:8px; font-size:0.7rem; letter-spacing:0.2em; color:var(--teal); font-weight:700; text-transform:uppercase; margin-bottom:14px; }
+    .sec-tag::before { content:''; width:18px; height:1px; background:var(--teal); }
+    h1 { font-size:clamp(2rem,4vw,3rem); font-weight:700; line-height:1.2; margin-bottom:16px; }
+    h1 em { background:linear-gradient(90deg,#00CFC0,#00f5e9,#00a89e,#00CFC0); background-size:250% auto; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:gradShift 4s ease infinite; font-style:normal; }
+    @keyframes gradShift { 0%{background-position:0%} 50%{background-position:100%} 100%{background-position:0%} }
+    .blog-desc { color:var(--gray); font-size:1rem; max-width:600px; margin:0 auto; }
+    .blog-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+    .blog-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px; display:flex; flex-direction:column; gap:12px; transition:transform 0.35s cubic-bezier(.22,1,.36,1),box-shadow 0.35s,border-color 0.35s; }
+    .blog-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,207,192,0.1); border-color:rgba(0,207,192,0.3); }
+    .blog-tag { font-size:0.6rem; font-weight:700; letter-spacing:0.16em; color:var(--teal); text-transform:uppercase; }
+    .blog-meta { font-size:0.72rem; color:var(--gray); }
+    .blog-card h2 { font-size:1rem; font-weight:700; line-height:1.4; }
+    .blog-card p { font-size:0.82rem; color:var(--gray); line-height:1.6; flex:1; }
+    .blog-tags { display:flex; gap:6px; flex-wrap:wrap; }
+    .btag { font-size:0.62rem; padding:3px 9px; border-radius:20px; background:rgba(0,207,192,0.08); border:1px solid rgba(0,207,192,0.18); color:var(--teal); font-weight:600; }
+    .blog-read { font-size:0.8rem; font-weight:700; color:var(--teal); margin-top:4px; }
+    .blog-read:hover { text-decoration:underline; }
+    .add-guide { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:32px; margin-top:56px; }
+    .add-guide h3 { font-size:1rem; font-weight:700; color:var(--teal); margin-bottom:12px; }
+    .add-guide p, .add-guide li { font-size:0.82rem; color:var(--gray); line-height:1.7; }
+    .add-guide ol { padding-left:20px; margin-top:8px; }
+    .add-guide code { background:rgba(0,207,192,0.1); border:1px solid var(--border); border-radius:4px; padding:2px 6px; font-size:0.78rem; color:var(--teal); }
+    /* ── Curadoria externa ── */
+    .section-sep { margin:72px 0 40px; }
+    .section-sep .sec-label { font-size:0.65rem; font-weight:700; letter-spacing:0.2em; color:var(--gray); text-transform:uppercase; display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+    .section-sep .sec-label::after { content:''; flex:1; height:1px; background:var(--border); }
+    .section-sep h2 { font-size:1.35rem; font-weight:700; margin-bottom:6px; }
+    .section-sep p { font-size:0.85rem; color:var(--gray); }
+    .ext-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .ext-card { background:#08100f; border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:20px 22px; display:flex; flex-direction:column; gap:10px; transition:transform 0.3s cubic-bezier(.22,1,.36,1),box-shadow 0.3s,border-color 0.3s; }
+    .ext-card:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(0,0,0,0.4); border-color:rgba(255,255,255,0.12); }
+    .ext-source { display:inline-flex; align-items:center; gap:6px; font-size:0.6rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:3px 9px; border-radius:20px; width:fit-content; }
+    .src-migalhas  { background:rgba(220,60,40,0.15);  color:#e8604a; border:1px solid rgba(220,60,40,0.25); }
+    .src-conjur    { background:rgba(50,120,220,0.15); color:#5b9ef7; border:1px solid rgba(50,120,220,0.25); }
+    .src-jusbrasil { background:rgba(120,80,200,0.15); color:#a07eee; border:1px solid rgba(120,80,200,0.25); }
+    .src-linkedin  { background:rgba(10,102,194,0.15); color:#5b9ef7; border:1px solid rgba(10,102,194,0.25); }
+    .src-outro     { background:rgba(107,136,133,0.15);color:var(--gray);border:1px solid rgba(107,136,133,0.2); }
+    .ext-meta { font-size:0.7rem; color:var(--gray); }
+    .ext-card h3 { font-size:0.9rem; font-weight:700; line-height:1.45; color:rgba(240,250,249,0.9); flex:1; }
+    .ext-card p  { font-size:0.78rem; color:var(--gray); line-height:1.55; }
+    .ext-link { font-size:0.75rem; font-weight:700; color:var(--gray); display:flex; align-items:center; gap:5px; margin-top:2px; }
+    .ext-link:hover { color:var(--teal); }
+    .ext-link svg { flex-shrink:0; }
+    footer { text-align:center; padding:40px 24px; border-top:1px solid var(--border); color:var(--gray); font-size:0.8rem; }
+    @media(max-width:900px) { .ext-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:768px) { .blog-grid{grid-template-columns:1fr;} .ext-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo"><svg style="height:34px;width:auto;" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="bvg" x1="2" y1="3" x2="34" y2="33" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#00CFC0"/><stop offset="100%" stop-color="#00a89e"/></linearGradient></defs><path d="M3,4 L18,32 L33,4" stroke="url(#bvg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>VORTEX</a>
+  <a href="/" class="nav-back">← Voltar ao site</a>
+</nav>
+
+<main>
+  <div class="blog-hero">
+    <div class="sec-tag">BLOG &amp; CONTEÚDO</div>
+    <h1>Conformidade e gestão <em>na prática.</em></h1>
+    <p class="blog-desc">Conteúdo técnico e jurídico sobre NR-36, controle de pausas e RFID industrial — publicado 2× por semana.</p>
+  </div>
+
+  <div class="blog-grid">
+
+    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">NR-36</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-07-01">01 Jul 2026</time> · 5 min leitura</div>
+      <h2 itemprop="headline">NR-36 e RFID: como garantir conformidade automática de pausas térmicas em frigoríficos</h2>
+      <p itemprop="description">A NR-36 exige registro individual de cada pausa térmica com comprovação auditável. Entenda o que mudou, quais são as penalidades e por que o papel não protege mais sua empresa.</p>
+      <div class="blog-tags"><span class="btag">NR-36</span><span class="btag">Compliance</span><span class="btag">Frigorífico</span></div>
+      <a href="/blog/nr-36-nova-portaria-rfid" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">ROI</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-06-27">27 Jun 2026</time> · 7 min leitura</div>
+      <h2 itemprop="headline">Quanto custa uma ação trabalhista de pausa em câmara fria? Cálculo real com dados do TST</h2>
+      <p itemprop="description">Com base em dados reais do TST, uma ação trabalhista por descumprimento de pausa térmica custa em média R$ 28.000. Veja como calcular o risco da sua operação.</p>
+      <div class="blog-tags"><span class="btag">ROI</span><span class="btag">Trabalhista</span><span class="btag">Gestão</span></div>
+      <a href="/blog/custo-acao-trabalhista-camara-fria" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">RFID</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-06-20">20 Jun 2026</time> · 6 min leitura</div>
+      <h2 itemprop="headline">RFID passivo em câmaras frias: como a tecnologia funciona a −30°C sem bateria</h2>
+      <p itemprop="description">Tags RFID passivas não precisam de bateria e funcionam perfeitamente em congelamento extremo. Entenda a tecnologia por trás do VORTEX.</p>
+      <div class="blog-tags"><span class="btag">RFID</span><span class="btag">Tecnologia</span><span class="btag">Câmara Fria</span></div>
+      <a href="/blog/rfid-passivo-camaras-frias" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">GESTÃO</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-06-13">13 Jun 2026</time> · 4 min leitura</div>
+      <h2 itemprop="headline">12 minutos por colaborador por dia: o custo invisível que drena a produtividade do frigorífico</h2>
+      <p itemprop="description">Para 500 colaboradores, 12 minutos extras representa 25.000 horas desperdiçadas por ano — R$ 385.000 em mão de obra. Veja como eliminar esse vazamento.</p>
+      <div class="blog-tags"><span class="btag">Produtividade</span><span class="btag">Gestão</span><span class="btag">ROI</span></div>
+      <a href="/blog/12-minutos-custo-produtividade-frigorifico" class="blog-read">Ler artigo →</a>
+    </article>
+
+  </div>
+
+  <!-- ══════════════════ CURADORIA EXTERNA ══════════════════ -->
+  <div class="section-sep">
+    <div class="sec-label">Curadoria</div>
+    <h2>Na mídia &amp; fontes do setor</h2>
+    <p>Artigos relevantes de Migalhas, CONJUR, JusBrasil e outras fontes — selecionados pela equipe VORTEX.</p>
+  </div>
+
+  <div class="ext-grid">
+
+    <!-- ── EXEMPLO MIGALHAS ── -->
+    <a class="ext-card" href="https://www.migalhas.com.br/quentes/400000/nr-36-obrigacoes-dos-empregadores-em-frigorificos" target="_blank" rel="noopener noreferrer">
+      <span class="ext-source src-migalhas">Migalhas</span>
+      <div class="ext-meta">Jun 2026</div>
+      <h3>NR-36: obrigações dos empregadores em frigoríficos e abatedouros</h3>
+      <p>Análise das principais exigências da norma e o que mudou após a última atualização da Portaria MTE.</p>
+      <span class="ext-link">
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        ler no Migalhas
+      </span>
+    </a>
+
+    <!-- ── EXEMPLO CONJUR ── -->
+    <a class="ext-card" href="https://www.conjur.com.br/2025-mar-10/pausas-termicas-em-frigorificos-risco-trabalhista-e-compliance/" target="_blank" rel="noopener noreferrer">
+      <span class="ext-source src-conjur">CONJUR</span>
+      <div class="ext-meta">Mar 2025</div>
+      <h3>Pausas térmicas em frigoríficos: risco trabalhista e compliance</h3>
+      <p>O Consultor Jurídico analisa os precedentes do TST sobre pausas não concedidas e as estratégias de defesa.</p>
+      <span class="ext-link">
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        ler no CONJUR
+      </span>
+    </a>
+
+    <!-- ── EXEMPLO JUSBRASIL ── -->
+    <a class="ext-card" href="https://www.jusbrasil.com.br/artigos/nr-36-controle-de-pausas-termicas/123456" target="_blank" rel="noopener noreferrer">
+      <span class="ext-source src-jusbrasil">JusBrasil</span>
+      <div class="ext-meta">Abr 2025</div>
+      <h3>Controle de pausas térmicas: o que a jurisprudência diz sobre prova documental</h3>
+      <p>Coletânea de decisões do TRT sobre a validade de registros em papel versus registros eletrônicos em ações de pausa térmica.</p>
+      <span class="ext-link">
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        ler no JusBrasil
+      </span>
+    </a>
+
+    <!-- ── ADICIONAR NOVOS LINKS EXTERNOS ABAIXO ── -->
+    <!--
+    MODELO PARA NOVO CARD EXTERNO — copie, cole e preencha:
+
+    <a class="ext-card" href="URL_DO_ARTIGO" target="_blank" rel="noopener noreferrer">
+      <span class="ext-source src-migalhas">Migalhas</span>    ← trocar classe pela fonte
+      <div class="ext-meta">Mês Ano</div>
+      <h3>Título do artigo externo</h3>
+      <p>Resumo em 1-2 frases do que o artigo cobre.</p>
+      <span class="ext-link">
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        ler no NomeDaSite
+      </span>
+    </a>
+
+    Classes de fonte disponíveis:
+      src-migalhas   → vermelho  (Migalhas)
+      src-conjur     → azul      (CONJUR / Consultor Jurídico)
+      src-jusbrasil  → roxo      (JusBrasil)
+      src-linkedin   → azul-claro (LinkedIn)
+      src-outro      → cinza     (qualquer outra fonte)
+    -->
+
+  </div>
+
+  <!-- Guia para adicionar artigos -->
+  <div class="add-guide" style="margin-top:56px;">
+    <h3>📝 Como adicionar conteúdo ao blog</h3>
+    <p><strong style="color:var(--teal);">Artigo próprio VORTEX (2× por semana):</strong></p>
+    <ol>
+      <li>Copie <code>blog/_template.html</code>, renomeie com o slug (ex: <code>blog/meu-novo-artigo.html</code>) e edite</li>
+      <li>Adicione um <code>&lt;article class="blog-card"&gt;</code> acima nesta página e no <code>index.html</code> principal</li>
+      <li>Adicione a URL no <code>sitemap.xml</code></li>
+    </ol>
+    <p style="margin-top:16px;"><strong style="color:var(--teal);">Link externo (curadoria Migalhas, CONJUR, JusBrasil…):</strong></p>
+    <ol>
+      <li>Copie o modelo comentado na seção <code>&lt;!-- ADICIONAR NOVOS LINKS EXTERNOS --&gt;</code> acima</li>
+      <li>Preencha URL, fonte, data, título e resumo — não precisa criar arquivo HTML</li>
+      <li>Não adicionar ao <code>sitemap.xml</code> (links externos não são indexados pelo Google como suas páginas)</li>
+    </ol>
+    <p style="margin-top:16px;">Após qualquer edição, publique com: <code>./node_modules/.bin/vercel --prod --yes</code></p>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 VORTEX — Grupo PBC TECH · Brasil RFID · <a href="/" style="color:var(--teal);">Voltar ao site</a></p>
+</footer>
+</body>
+</html>

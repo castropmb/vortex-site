@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NR-36 e RFID: como garantir conformidade automática de pausas térmicas | Blog VORTEX</title>
+  <meta name="description" content="A NR-36 exige registro auditável de cada pausa térmica em frigoríficos. Entenda as penalidades, o que mudou e como o RFID elimina o risco jurídico automaticamente." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://vortex-site-swart.vercel.app/blog/nr-36-nova-portaria-rfid" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23000'/><polygon points='8,12 24,12 32,36 40,12 56,12 38,52 26,52' fill='%2300CFC0'/></svg>" />
+  <meta property="og:type"        content="article" />
+  <meta property="og:title"       content="NR-36 e RFID: conformidade automática de pausas térmicas" />
+  <meta property="og:description" content="Entenda o que muda com a NR-36, as penalidades e como o RFID garante conformidade sem papel." />
+  <meta property="og:url"         content="https://vortex-site-swart.vercel.app/blog/nr-36-nova-portaria-rfid" />
+  <meta property="og:image"       content="https://vortex-site-swart.vercel.app/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "NR-36 e RFID: como garantir conformidade automática de pausas térmicas em frigoríficos",
+    "description": "A NR-36 exige registro auditável de cada pausa térmica. Entenda as penalidades e como o RFID elimina o risco jurídico automaticamente.",
+    "datePublished": "2026-07-01",
+    "dateModified":  "2026-07-01",
+    "author": { "@type": "Organization", "name": "VORTEX — Grupo PBC TECH" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "VORTEX",
+      "logo": { "@type": "ImageObject", "url": "https://vortex-site-swart.vercel.app/logo.png" }
+    },
+    "url": "https://vortex-site-swart.vercel.app/blog/nr-36-nova-portaria-rfid",
+    "keywords": "NR-36, pausa térmica, frigorífico, RFID, conformidade, MTE"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root { --teal:#00CFC0; --black:#000; --dark:#080d0c; --card:#0d1412; --border:rgba(0,207,192,0.16); --gray:#6b8885; --white:#f0faf9; }
+    body { font-family:'Space Grotesk',sans-serif; background:var(--black); color:var(--white); line-height:1.7; }
+    a { color:var(--teal); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(0,0,0,0.88); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:70px; }
+    .nav-logo { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:0.1em; color:var(--white); }
+    .nav-logo img { height:52px; width:auto; mix-blend-mode:screen; }
+    .nav-back { font-size:0.82rem; color:var(--teal); border:1px solid var(--border); border-radius:8px; padding:7px 16px; }
+    .nav-back:hover { background:rgba(0,207,192,0.1); text-decoration:none; }
+    article { max-width:740px; margin:0 auto; padding:120px 24px 80px; }
+    .art-tag { font-size:0.65rem; font-weight:700; letter-spacing:0.18em; color:var(--teal); text-transform:uppercase; margin-bottom:10px; }
+    .art-meta { font-size:0.78rem; color:var(--gray); margin-bottom:24px; }
+    h1 { font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:700; line-height:1.25; margin-bottom:20px; }
+    .art-intro { font-size:1.05rem; color:rgba(240,250,249,0.75); margin-bottom:40px; padding-bottom:32px; border-bottom:1px solid var(--border); }
+    h2 { font-size:1.2rem; font-weight:700; color:var(--teal); margin:40px 0 14px; }
+    h3 { font-size:0.98rem; font-weight:700; margin:28px 0 10px; }
+    p { margin-bottom:18px; color:rgba(240,250,249,0.85); }
+    ul, ol { padding-left:22px; margin-bottom:18px; color:rgba(240,250,249,0.85); }
+    li { margin-bottom:8px; }
+    blockquote { border-left:3px solid var(--teal); padding:12px 20px; background:rgba(0,207,192,0.05); border-radius:0 8px 8px 0; margin:24px 0; color:rgba(240,250,249,0.7); }
+    .highlight-box { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin:28px 0; }
+    .highlight-box strong { color:var(--teal); }
+    .warn-box { background:rgba(251,191,36,0.05); border:1px solid rgba(251,191,36,0.2); border-radius:12px; padding:20px 24px; margin:28px 0; color:rgba(251,191,36,0.85); }
+    .cta-box { background:linear-gradient(135deg,rgba(0,207,192,0.1),rgba(0,207,192,0.04)); border:1px solid rgba(0,207,192,0.3); border-radius:16px; padding:32px; text-align:center; margin:52px 0 0; }
+    .cta-box h3 { font-size:1.2rem; margin-bottom:12px; color:var(--white); }
+    .cta-box p { color:var(--gray); margin-bottom:20px; }
+    .cta-btn { display:inline-block; background:var(--teal); color:#000; font-weight:700; font-size:0.88rem; padding:12px 28px; border-radius:8px; letter-spacing:0.06em; }
+    .cta-btn:hover { opacity:0.9; text-decoration:none; }
+    .blog-nav { display:flex; justify-content:space-between; gap:16px; margin-top:56px; padding-top:32px; border-top:1px solid var(--border); }
+    .blog-nav a { font-size:0.82rem; color:var(--gray); }
+    .blog-nav a:hover { color:var(--teal); }
+    footer { text-align:center; padding:40px 24px; border-top:1px solid var(--border); color:var(--gray); font-size:0.8rem; margin-top:40px; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo"><svg style="height:34px;width:auto;" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="bvg" x1="2" y1="3" x2="34" y2="33" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#00CFC0"/><stop offset="100%" stop-color="#00a89e"/></linearGradient></defs><path d="M3,4 L18,32 L33,4" stroke="url(#bvg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>VORTEX</a>
+  <a href="/blog" class="nav-back">← Blog</a>
+</nav>
+
+<article itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="art-tag">NR-36 · COMPLIANCE</div>
+  <div class="art-meta">
+    <time itemprop="datePublished" datetime="2026-07-01">01 de julho de 2026</time> · 5 min leitura · Por <span itemprop="author">Equipe VORTEX</span>
+  </div>
+
+  <h1 itemprop="headline">NR-36 e RFID: como garantir conformidade automática de pausas térmicas em frigoríficos</h1>
+
+  <p class="art-intro" itemprop="description">
+    A NR-36 — Norma Regulamentadora aplicada a frigoríficos, abatedouros e câmaras frias — exige o registro individual e auditável de cada pausa térmica realizada pelo colaborador. O descumprimento gera multas do MTE que chegam a R$ 50.000 por infração e passivo trabalhista acumulado. Mas a maioria das empresas ainda controla isso em papel. Neste artigo, entenda o que a norma exige, quais são as armadilhas do controle manual e como o RFID resolve o problema de forma automática.
+  </p>
+
+  <h2>O que a NR-36 exige sobre pausas térmicas?</h2>
+  <p>A NR-36 (Portaria MTE nº 555/2013 e atualizações) estabelece que trabalhadores expostos ao frio — em câmaras, linhas de abate e áreas de resfriamento — têm direito a pausas térmicas obrigatórias durante a jornada. As regras principais são:</p>
+  <ul>
+    <li><strong>Câmaras frias (0°C a −18°C):</strong> 20 minutos de pausa a cada 1h40 de trabalho contínuo no frio</li>
+    <li><strong>Câmaras de congelamento (abaixo de −18°C):</strong> pausas mais frequentes, conforme laudo de insalubridade</li>
+    <li><strong>Linha de abate com exposição ao calor:</strong> pausas térmicas por calor conforme Anexo I</li>
+    <li><strong>Registro obrigatório:</strong> cada pausa deve ser registrada individualmente com horário de início, fim e identificação do trabalhador</li>
+  </ul>
+
+  <div class="highlight-box">
+    <strong>Ponto crítico:</strong> A norma não especifica o meio de registro, mas a Auditoria-Fiscal do Trabalho exige que o controle seja <em>confiável, individualizado e não manipulável</em>. Registros em papel são sistematicamente questionados em fiscalizações e ações trabalhistas.
+  </div>
+
+  <h2>Por que o controle em papel não protege sua empresa?</h2>
+  <p>Grandes frigoríficos brasileiros foram autuados nos últimos anos mesmo apresentando folhas de controle assinadas. Os motivos são recorrentes:</p>
+  <ol>
+    <li><strong>Assinaturas em lote:</strong> supervisores assinam várias folhas de uma vez, sem conferência individual</li>
+    <li><strong>Falta de rastreabilidade:</strong> não há como provar que a pausa aconteceu no horário registrado</li>
+    <li><strong>Divergência com ponto eletrônico:</strong> o ponto bate mas a folha de pausa não — o auditor usa o registro mais desfavorável ao empregador</li>
+    <li><strong>Adulteração fácil:</strong> qualquer planilha pode ser editada retroativamente, o que resulta em autuação por fraude documental</li>
+  </ol>
+
+  <blockquote>"A ausência de controle confiável é tratada como descumprimento da norma, independentemente se as pausas foram ou não concedidas." — Orientação da SRTE/PR</blockquote>
+
+  <h2>Como o RFID resolve o problema automaticamente</h2>
+  <p>O sistema VORTEX usa tecnologia RFID passiva — a mesma utilizada em rastreamento de ativos industriais — para registrar cada pausa de forma autônoma, sem nenhuma ação do colaborador:</p>
+
+  <ul>
+    <li><strong>Tag RFID no EPI:</strong> uma tag passiva ultrarresistente é fixada no EPI do trabalhador. Sem bateria. Funciona a −30°C. Sem manutenção.</li>
+    <li><strong>Portal RFID na entrada da área:</strong> ao passar pelo portal (câmara fria, área de descanso), o sistema registra automaticamente horário, identidade e local</li>
+    <li><strong>Registro imutável em nuvem:</strong> cada leitura é gravada com timestamp eletrônico e assinatura digital. Nenhum humano pode editar o registro</li>
+    <li><strong>Relatório com validade jurídica:</strong> exportado em PDF com hash criptográfico, pronto para apresentação ao MTE ou em processos trabalhistas</li>
+  </ul>
+
+  <div class="highlight-box">
+    <strong>Resultado prático:</strong> clientes VORTEX apresentam relatórios RFID em fiscalizações e ações trabalhistas e obtêm arquivamento imediato. O dado eletrônico com timestamp não pode ser contestado da mesma forma que o papel.
+  </div>
+
+  <h2>Quais são as penalidades por descumprimento da NR-36?</h2>
+  <div class="warn-box">
+    ⚠️ <strong>Atenção:</strong> Os valores abaixo são referências com base na tabela de multas do MTE. O valor exato depende do grau de infração, número de empregados afetados e reincidência.
+    <ul style="margin-top:10px;">
+      <li>Infração de grau I (leve): a partir de R$ 1.787</li>
+      <li>Infração de grau III (grave): até R$ 50.426 por trabalhador afetado</li>
+      <li>Reincidência: valor dobrado</li>
+      <li>Ação trabalhista individual por pausa não concedida: média de R$ 8.000 a R$ 28.000 (fonte: jurisprudência TST)</li>
+    </ul>
+  </div>
+
+  <h2>Conclusão: conformidade é um processo, não um documento</h2>
+  <p>A NR-36 não é cumprida com uma pasta de formulários. Ela é cumprida com um processo confiável que garante que cada trabalhador receba sua pausa, no horário certo, e que isso fique registrado de forma irrefutável.</p>
+  <p>O RFID não substitui o RH — ele elimina o risco de que um processo humano falhe e exponha a empresa a autuações milionárias. Para frigoríficos com mais de 100 colaboradores, o custo de implementação do VORTEX é recuperado em menos de 18 meses só com a redução do risco jurídico.</p>
+
+  <div class="cta-box">
+    <h3>Quer saber se sua operação está exposta?</h3>
+    <p>Agende uma avaliação gratuita com nossa equipe. Identificamos os pontos de risco da sua operação e calculamos o ROI personalizado.</p>
+    <a href="/#demo" class="cta-btn">AGENDAR AVALIAÇÃO GRATUITA</a>
+  </div>
+
+  <div class="blog-nav">
+    <a href="/blog">← Todos os artigos</a>
+    <a href="/blog/custo-acao-trabalhista-camara-fria">Próximo: custo de ação trabalhista →</a>
+  </div>
+</article>
+
+<footer>
+  <p>© 2026 VORTEX — Grupo PBC TECH · Brasil RFID · <a href="/" style="color:var(--teal);">vortex-site-swart.vercel.app</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RFID passivo em câmaras frias: como funciona a −30°C sem bateria | Blog VORTEX</title>
+  <meta name="description" content="Tags RFID passivas funcionam em congelamento extremo sem bateria, sem manutenção. Entenda a física por trás da tecnologia usada pelo VORTEX em frigoríficos." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://vortex-site-swart.vercel.app/blog/rfid-passivo-camaras-frias" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23000'/><polygon points='8,12 24,12 32,36 40,12 56,12 38,52 26,52' fill='%2300CFC0'/></svg>" />
+  <meta property="og:type"        content="article" />
+  <meta property="og:title"       content="RFID passivo em câmaras frias: como funciona a −30°C sem bateria" />
+  <meta property="og:description" content="A física do RFID passivo: por que funciona no frio extremo, sem manutenção, por anos." />
+  <meta property="og:url"         content="https://vortex-site-swart.vercel.app/blog/rfid-passivo-camaras-frias" />
+  <meta property="og:image"       content="https://vortex-site-swart.vercel.app/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "RFID passivo em câmaras frias: como a tecnologia funciona a −30°C sem bateria",
+    "description": "Tags RFID passivas não precisam de bateria e funcionam em congelamento extremo. Entenda a tecnologia por trás do VORTEX.",
+    "datePublished": "2026-06-20",
+    "dateModified":  "2026-06-20",
+    "author": { "@type": "Organization", "name": "VORTEX — Grupo PBC TECH" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "VORTEX",
+      "logo": { "@type": "ImageObject", "url": "https://vortex-site-swart.vercel.app/logo.png" }
+    },
+    "url": "https://vortex-site-swart.vercel.app/blog/rfid-passivo-camaras-frias",
+    "keywords": "RFID passivo, câmara fria, frigorífico, tag RFID, UHF, rastreamento, temperatura negativa"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root { --teal:#00CFC0; --black:#000; --dark:#080d0c; --card:#0d1412; --border:rgba(0,207,192,0.16); --gray:#6b8885; --white:#f0faf9; }
+    body { font-family:'Space Grotesk',sans-serif; background:var(--black); color:var(--white); line-height:1.7; }
+    a { color:var(--teal); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(0,0,0,0.88); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:70px; }
+    .nav-logo { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:0.1em; color:var(--white); }
+    .nav-logo img { height:52px; width:auto; mix-blend-mode:screen; }
+    .nav-back { font-size:0.82rem; color:var(--teal); border:1px solid var(--border); border-radius:8px; padding:7px 16px; }
+    .nav-back:hover { background:rgba(0,207,192,0.1); text-decoration:none; }
+    article { max-width:740px; margin:0 auto; padding:120px 24px 80px; }
+    .art-tag { font-size:0.65rem; font-weight:700; letter-spacing:0.18em; color:var(--teal); text-transform:uppercase; margin-bottom:10px; }
+    .art-meta { font-size:0.78rem; color:var(--gray); margin-bottom:24px; }
+    h1 { font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:700; line-height:1.25; margin-bottom:20px; }
+    .art-intro { font-size:1.05rem; color:rgba(240,250,249,0.75); margin-bottom:40px; padding-bottom:32px; border-bottom:1px solid var(--border); }
+    h2 { font-size:1.2rem; font-weight:700; color:var(--teal); margin:40px 0 14px; }
+    h3 { font-size:0.98rem; font-weight:700; margin:28px 0 10px; }
+    p { margin-bottom:18px; color:rgba(240,250,249,0.85); }
+    ul, ol { padding-left:22px; margin-bottom:18px; color:rgba(240,250,249,0.85); }
+    li { margin-bottom:8px; }
+    blockquote { border-left:3px solid var(--teal); padding:12px 20px; background:rgba(0,207,192,0.05); border-radius:0 8px 8px 0; margin:24px 0; color:rgba(240,250,249,0.7); }
+    .highlight-box { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin:28px 0; }
+    .highlight-box strong { color:var(--teal); }
+    .spec-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+    .spec-item { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; }
+    .spec-label { font-size:0.65rem; font-weight:700; letter-spacing:0.12em; color:var(--teal); text-transform:uppercase; margin-bottom:4px; }
+    .spec-value { font-size:1rem; font-weight:700; }
+    .spec-note { font-size:0.72rem; color:var(--gray); margin-top:2px; }
+    .cta-box { background:linear-gradient(135deg,rgba(0,207,192,0.1),rgba(0,207,192,0.04)); border:1px solid rgba(0,207,192,0.3); border-radius:16px; padding:32px; text-align:center; margin:52px 0 0; }
+    .cta-box h3 { font-size:1.2rem; margin-bottom:12px; color:var(--white); }
+    .cta-box p { color:var(--gray); margin-bottom:20px; }
+    .cta-btn { display:inline-block; background:var(--teal); color:#000; font-weight:700; font-size:0.88rem; padding:12px 28px; border-radius:8px; letter-spacing:0.06em; }
+    .cta-btn:hover { opacity:0.9; text-decoration:none; }
+    .blog-nav { display:flex; justify-content:space-between; gap:16px; margin-top:56px; padding-top:32px; border-top:1px solid var(--border); }
+    .blog-nav a { font-size:0.82rem; color:var(--gray); }
+    .blog-nav a:hover { color:var(--teal); }
+    footer { text-align:center; padding:40px 24px; border-top:1px solid var(--border); color:var(--gray); font-size:0.8rem; margin-top:40px; }
+    @media(max-width:600px) { .spec-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo"><svg style="height:34px;width:auto;" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="bvg" x1="2" y1="3" x2="34" y2="33" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#00CFC0"/><stop offset="100%" stop-color="#00a89e"/></linearGradient></defs><path d="M3,4 L18,32 L33,4" stroke="url(#bvg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>VORTEX</a>
+  <a href="/blog" class="nav-back">← Blog</a>
+</nav>
+
+<article itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="art-tag">RFID · TECNOLOGIA</div>
+  <div class="art-meta">
+    <time itemprop="datePublished" datetime="2026-06-20">20 de junho de 2026</time> · 6 min leitura · Por <span itemprop="author">Equipe VORTEX</span>
+  </div>
+
+  <h1 itemprop="headline">RFID passivo em câmaras frias: como a tecnologia funciona a −30°C sem bateria</h1>
+
+  <p class="art-intro" itemprop="description">
+    A primeira dúvida de qualquer gestor de frigorífico ao conhecer o VORTEX é: "como uma etiqueta sem bateria funciona dentro de uma câmara a −30°C?" A resposta está na física do RFID passivo UHF — uma tecnologia madura, usada há décadas em rastreamento de ativos industriais, que não depende de energia própria e opera perfeitamente em condições extremas. Este artigo explica como funciona, por que é confiável e por que é a escolha certa para o controle de pausas em frigoríficos.
+  </p>
+
+  <h2>A diferença entre RFID ativo e passivo</h2>
+  <p>Existe uma distinção fundamental que determina tudo sobre custo, durabilidade e aplicação:</p>
+  <ul>
+    <li><strong>RFID ativo:</strong> a tag tem bateria própria, transmite sinal constantemente, alcance de até 100m, custo de R$ 80 a R$ 300 por tag, vida útil limitada pela bateria (2 a 5 anos)</li>
+    <li><strong>RFID passivo:</strong> a tag não tem bateria, fica inerte até ser energizada pelo leitor, alcance de 1 a 10m, custo de R$ 1 a R$ 15 por tag, vida útil ilimitada (o chip não tem partes móveis ou que se desgastem)</li>
+  </ul>
+  <p>O VORTEX usa RFID passivo UHF (Ultra High Frequency, faixa de 860–960 MHz). A tag no EPI do colaborador literalmente não existe eletricamente até que o portal a "acorde" com energia de rádio frequência — e aí responde em milissegundos com seu ID único.</p>
+
+  <h2>Por que o frio extremo não é um problema</h2>
+  <p>Baterias são afetadas pelo frio porque dependem de reações químicas que ficam mais lentas em temperaturas baixas. Baterias de lítio perdem mais de 50% da capacidade a −20°C. Um RFID passivo não tem esse problema porque:</p>
+  <ul>
+    <li>Não há bateria, logo não há reação química para congelar</li>
+    <li>O chip de silício opera normalmente entre −40°C e +85°C (especificação padrão ISO 18000-6C)</li>
+    <li>A antena em cobre ou alumínio laminado mantém condutividade elétrica mesmo em congelamento profundo</li>
+    <li>O substrato (material base da tag) é escolhido para resistir a ciclos de congelamento e descongelamento sem delaminar</li>
+  </ul>
+
+  <div class="spec-grid">
+    <div class="spec-item">
+      <div class="spec-label">Temperatura de operação</div>
+      <div class="spec-value">−40°C a +85°C</div>
+      <div class="spec-note">Tags industriais certificadas</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Vida útil da tag</div>
+      <div class="spec-value">10+ anos</div>
+      <div class="spec-note">Sem bateria = sem degradação</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Alcance de leitura</div>
+      <div class="spec-value">1 – 8 metros</div>
+      <div class="spec-note">Configurável por portal</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Padrão internacional</div>
+      <div class="spec-value">EPC Gen2 / ISO 18000-6C</div>
+      <div class="spec-note">Interoperável globalmente</div>
+    </div>
+  </div>
+
+  <h2>Como o portal captura o colaborador ao passar</h2>
+  <p>O portal RFID é uma estrutura de leitura instalada na entrada da câmara fria ou área de descanso. O processo de leitura acontece em menos de 100 milissegundos:</p>
+  <ol>
+    <li>O leitor emite campo eletromagnético contínuo na frequência UHF</li>
+    <li>Quando a tag entra no campo, a antena dela absorve energia suficiente para alimentar o chip (sem bateria — pura indução eletromagnética)</li>
+    <li>O chip lê sua memória interna e transmite seu ID único de volta para o leitor via backscatter (reflexão modulada do sinal)</li>
+    <li>O leitor envia o ID + timestamp para o servidor VORTEX em tempo real via rede local ou 4G</li>
+    <li>O sistema registra: quem, quando, qual portal — e notifica o supervisor se algo está fora do padrão</li>
+  </ol>
+
+  <blockquote>
+    O campo eletromagnético penetra tecido, luvas e EPIs normalmente — o colaborador não precisa tirar nada nem fazer qualquer gesto. A leitura acontece enquanto ele caminha.
+  </blockquote>
+
+  <h2>O que acontece quando há muitas pessoas passando ao mesmo tempo?</h2>
+  <p>Este é um ponto técnico importante: leitores UHF modernos usam o protocolo anti-colisão EPC Gen2, que permite ler dezenas de tags simultaneamente em milissegundos usando o algoritmo de inventário slotted ALOHA. Na prática:</p>
+  <ul>
+    <li>Um portal VORTEX lê até <strong>200 tags por segundo</strong> sem erros</li>
+    <li>Mesmo numa troca de turno com 50 pessoas passando juntas, todas são registradas individualmente</li>
+    <li>Não há necessidade de passar um de cada vez</li>
+  </ul>
+
+  <div class="highlight-box">
+    <strong>Diferencial do VORTEX:</strong> os portais são calibrados para o ambiente específico de cada câmara — distância das paredes, presença de metal, umidade. Uma calibração incorreta pode causar leituras duplas ou perdas. Por isso o VORTEX inclui comissionamento técnico in loco em todos os projetos.
+  </div>
+
+  <h2>Conclusão: tecnologia madura no ambiente mais exigente</h2>
+  <p>O RFID passivo UHF é usado em rastreamento de carnes em frigoríficos há mais de 15 anos. O que o VORTEX fez foi aplicar a mesma tecnologia robusta para rastrear as <em>pessoas</em> que trabalham nesses ambientes — garantindo que cada pausa térmica seja registrada com a mesma precisão que um produto rastreado.</p>
+  <p>Sem bateria. Sem manutenção. Funcionando a −30°C. Registrando automaticamente cada pausa para sempre.</p>
+
+  <div class="cta-box">
+    <h3>Veja uma demonstração técnica do sistema</h3>
+    <p>Nossa equipe explica a instalação, o hardware e a integração com o sistema de RH da sua empresa em uma demonstração de 30 minutos.</p>
+    <a href="/#demo" class="cta-btn">AGENDAR DEMONSTRAÇÃO TÉCNICA</a>
+  </div>
+
+  <div class="blog-nav">
+    <a href="/blog/custo-acao-trabalhista-camara-fria">← Custo de ação trabalhista</a>
+    <a href="/blog/12-minutos-custo-produtividade-frigorifico">12 minutos e produtividade →</a>
+  </div>
+</article>
+
+<footer>
+  <p>© 2026 VORTEX — Grupo PBC TECH · Brasil RFID · <a href="/" style="color:var(--teal);">vortex-site-swart.vercel.app</a></p>
+</footer>
+</body>
+</html>
