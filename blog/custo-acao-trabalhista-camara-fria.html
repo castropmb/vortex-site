@@ -7,7 +7,7 @@
   <meta name="description" content="Com dados reais do TST, uma ação trabalhista por pausa térmica não concedida em câmara fria custa em média R$ 28.000. Saiba como calcular o risco da sua operação." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://vortex-site-swart.vercel.app/blog/custo-acao-trabalhista-camara-fria" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23000'/><polygon points='8,12 24,12 32,36 40,12 56,12 38,52 26,52' fill='%2300CFC0'/></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23111524'/><polygon points='8,12 24,12 32,36 40,12 56,12 38,52 26,52' fill='%23E87722'/></svg>" />
   <meta property="og:type"        content="article" />
   <meta property="og:title"       content="Quanto custa uma ação trabalhista de pausa em câmara fria?" />
   <meta property="og:description" content="Cálculo real com dados do TST: R$ 28.000 por ação em média. Saiba como proteger sua empresa." />
@@ -36,34 +36,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-    :root { --teal:#00CFC0; --black:#000; --dark:#080d0c; --card:#0d1412; --border:rgba(0,207,192,0.16); --gray:#6b8885; --white:#f0faf9; }
+    :root { --teal:#E87722; --black:#111524; --dark:#1A1F3C; --card:#1F2548; --border:rgba(232,119,34,0.16); --gray:#8FA0C0; --white:#F0F4FF; }
     body { font-family:'Space Grotesk',sans-serif; background:var(--black); color:var(--white); line-height:1.7; }
     a { color:var(--teal); text-decoration:none; }
     a:hover { text-decoration:underline; }
-    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(0,0,0,0.88); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:70px; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(17,21,36,0.93); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:70px; }
     .nav-logo { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:0.1em; color:var(--white); }
     .nav-logo img { height:52px; width:auto; mix-blend-mode:screen; }
     .nav-back { font-size:0.82rem; color:var(--teal); border:1px solid var(--border); border-radius:8px; padding:7px 16px; }
-    .nav-back:hover { background:rgba(0,207,192,0.1); text-decoration:none; }
+    .nav-back:hover { background:rgba(232,119,34,0.1); text-decoration:none; }
     article { max-width:740px; margin:0 auto; padding:120px 24px 80px; }
     .art-tag { font-size:0.65rem; font-weight:700; letter-spacing:0.18em; color:var(--teal); text-transform:uppercase; margin-bottom:10px; }
     .art-meta { font-size:0.78rem; color:var(--gray); margin-bottom:24px; }
     h1 { font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:700; line-height:1.25; margin-bottom:20px; }
-    .art-intro { font-size:1.05rem; color:rgba(240,250,249,0.75); margin-bottom:40px; padding-bottom:32px; border-bottom:1px solid var(--border); }
+    .art-intro { font-size:1.05rem; color:rgba(240,244,255,0.75); margin-bottom:40px; padding-bottom:32px; border-bottom:1px solid var(--border); }
     h2 { font-size:1.2rem; font-weight:700; color:var(--teal); margin:40px 0 14px; }
     h3 { font-size:0.98rem; font-weight:700; margin:28px 0 10px; }
-    p { margin-bottom:18px; color:rgba(240,250,249,0.85); }
-    ul, ol { padding-left:22px; margin-bottom:18px; color:rgba(240,250,249,0.85); }
+    p { margin-bottom:18px; color:rgba(240,244,255,0.85); }
+    ul, ol { padding-left:22px; margin-bottom:18px; color:rgba(240,244,255,0.85); }
     li { margin-bottom:8px; }
-    blockquote { border-left:3px solid var(--teal); padding:12px 20px; background:rgba(0,207,192,0.05); border-radius:0 8px 8px 0; margin:24px 0; color:rgba(240,250,249,0.7); }
+    blockquote { border-left:3px solid var(--teal); padding:12px 20px; background:rgba(232,119,34,0.05); border-radius:0 8px 8px 0; margin:24px 0; color:rgba(240,244,255,0.7); }
     .highlight-box { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin:28px 0; }
     .highlight-box strong { color:var(--teal); }
     .warn-box { background:rgba(251,191,36,0.05); border:1px solid rgba(251,191,36,0.2); border-radius:12px; padding:20px 24px; margin:28px 0; color:rgba(251,191,36,0.85); }
     .cost-table { width:100%; border-collapse:collapse; margin:24px 0; }
     .cost-table th { text-align:left; font-size:0.75rem; font-weight:700; color:var(--teal); letter-spacing:0.1em; text-transform:uppercase; padding:10px 14px; border-bottom:1px solid var(--border); }
-    .cost-table td { padding:12px 14px; font-size:0.88rem; color:rgba(240,250,249,0.85); border-bottom:1px solid rgba(0,207,192,0.06); }
+    .cost-table td { padding:12px 14px; font-size:0.88rem; color:rgba(240,244,255,0.85); border-bottom:1px solid rgba(232,119,34,0.06); }
     .cost-table tr:last-child td { border-bottom:none; font-weight:700; color:var(--teal); }
-    .cta-box { background:linear-gradient(135deg,rgba(0,207,192,0.1),rgba(0,207,192,0.04)); border:1px solid rgba(0,207,192,0.3); border-radius:16px; padding:32px; text-align:center; margin:52px 0 0; }
+    .cta-box { background:linear-gradient(135deg,rgba(232,119,34,0.1),rgba(232,119,34,0.04)); border:1px solid rgba(232,119,34,0.3); border-radius:16px; padding:32px; text-align:center; margin:52px 0 0; }
     .cta-box h3 { font-size:1.2rem; margin-bottom:12px; color:var(--white); }
     .cta-box p { color:var(--gray); margin-bottom:20px; }
     .cta-btn { display:inline-block; background:var(--teal); color:#000; font-weight:700; font-size:0.88rem; padding:12px 28px; border-radius:8px; letter-spacing:0.06em; }
@@ -76,7 +76,7 @@
 </head>
 <body>
 <nav>
-  <a href="/" class="nav-logo"><svg style="height:34px;width:auto;" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="bvg" x1="2" y1="3" x2="34" y2="33" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#00CFC0"/><stop offset="100%" stop-color="#00a89e"/></linearGradient></defs><path d="M3,4 L18,32 L33,4" stroke="url(#bvg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>VORTEX</a>
+  <a href="/" class="nav-logo"><svg style="height:34px;width:auto;" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="bvg" x1="2" y1="3" x2="34" y2="33" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#E87722"/><stop offset="100%" stop-color="#C0611A"/></linearGradient></defs><path d="M3,4 L18,32 L33,4" stroke="url(#bvg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>VORTEX</a>
   <a href="/blog" class="nav-back">← Blog</a>
 </nav>
 

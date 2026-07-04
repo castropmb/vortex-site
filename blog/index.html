@@ -7,7 +7,7 @@
   <meta name="description" content="Conteúdo técnico e jurídico sobre NR-36, controle de pausas térmicas, RFID industrial e gestão de frigoríficos. Publicado 2x por semana pela equipe VORTEX." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://vortex-site-swart.vercel.app/blog" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23000'/><polygon points='8,12 24,12 32,36 40,12 56,12 38,52 26,52' fill='%2300CFC0'/></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23111524'/><polygon points='8,12 24,12 32,36 40,12 56,12 38,52 26,52' fill='%23E87722'/></svg>" />
   <meta property="og:title" content="Blog VORTEX — NR-36, RFID e Controle de Pausas" />
   <meta property="og:description" content="Conteúdo técnico sobre NR-36, RFID industrial e gestão de frigoríficos." />
   <meta property="og:type" content="website" />
@@ -16,38 +16,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --teal:#00CFC0; --black:#000; --dark:#080d0c; --card:#0d1412; --border:rgba(0,207,192,0.16); --gray:#6b8885; --white:#f0faf9; }
+    :root { --teal:#E87722; --black:#111524; --dark:#1A1F3C; --card:#1F2548; --border:rgba(232,119,34,0.16); --gray:#8FA0C0; --white:#F0F4FF; }
     body { font-family:'Space Grotesk',sans-serif; background:var(--black); color:var(--white); line-height:1.6; }
     a { color:inherit; text-decoration:none; }
-    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(0,0,0,0.85); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:70px; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(17,21,36,0.90); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:70px; }
     .nav-logo { display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.1rem; letter-spacing:0.1em; }
     .nav-logo img { height:52px; width:auto; mix-blend-mode:screen; }
     .nav-back { font-size:0.82rem; color:var(--teal); border:1px solid var(--border); border-radius:8px; padding:7px 16px; transition:background 0.2s; }
-    .nav-back:hover { background:rgba(0,207,192,0.1); }
+    .nav-back:hover { background:rgba(232,119,34,0.1); }
     main { padding:120px 24px 80px; max-width:1100px; margin:0 auto; }
     .blog-hero { text-align:center; margin-bottom:64px; }
     .sec-tag { display:inline-flex; align-items:center; gap:8px; font-size:0.7rem; letter-spacing:0.2em; color:var(--teal); font-weight:700; text-transform:uppercase; margin-bottom:14px; }
     .sec-tag::before { content:''; width:18px; height:1px; background:var(--teal); }
     h1 { font-size:clamp(2rem,4vw,3rem); font-weight:700; line-height:1.2; margin-bottom:16px; }
-    h1 em { background:linear-gradient(90deg,#00CFC0,#00f5e9,#00a89e,#00CFC0); background-size:250% auto; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:gradShift 4s ease infinite; font-style:normal; }
+    h1 em { background:linear-gradient(90deg,#E87722,#FFB347,#C0611A,#E87722); background-size:250% auto; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:gradShift 4s ease infinite; font-style:normal; }
     @keyframes gradShift { 0%{background-position:0%} 50%{background-position:100%} 100%{background-position:0%} }
     .blog-desc { color:var(--gray); font-size:1rem; max-width:600px; margin:0 auto; }
     .blog-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
     .blog-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px; display:flex; flex-direction:column; gap:12px; transition:transform 0.35s cubic-bezier(.22,1,.36,1),box-shadow 0.35s,border-color 0.35s; }
-    .blog-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,207,192,0.1); border-color:rgba(0,207,192,0.3); }
+    .blog-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(232,119,34,0.1); border-color:rgba(232,119,34,0.3); }
     .blog-tag { font-size:0.6rem; font-weight:700; letter-spacing:0.16em; color:var(--teal); text-transform:uppercase; }
     .blog-meta { font-size:0.72rem; color:var(--gray); }
     .blog-card h2 { font-size:1rem; font-weight:700; line-height:1.4; }
     .blog-card p { font-size:0.82rem; color:var(--gray); line-height:1.6; flex:1; }
     .blog-tags { display:flex; gap:6px; flex-wrap:wrap; }
-    .btag { font-size:0.62rem; padding:3px 9px; border-radius:20px; background:rgba(0,207,192,0.08); border:1px solid rgba(0,207,192,0.18); color:var(--teal); font-weight:600; }
+    .btag { font-size:0.62rem; padding:3px 9px; border-radius:20px; background:rgba(232,119,34,0.08); border:1px solid rgba(232,119,34,0.18); color:var(--teal); font-weight:600; }
     .blog-read { font-size:0.8rem; font-weight:700; color:var(--teal); margin-top:4px; }
     .blog-read:hover { text-decoration:underline; }
     .add-guide { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:32px; margin-top:56px; }
     .add-guide h3 { font-size:1rem; font-weight:700; color:var(--teal); margin-bottom:12px; }
     .add-guide p, .add-guide li { font-size:0.82rem; color:var(--gray); line-height:1.7; }
     .add-guide ol { padding-left:20px; margin-top:8px; }
-    .add-guide code { background:rgba(0,207,192,0.1); border:1px solid var(--border); border-radius:4px; padding:2px 6px; font-size:0.78rem; color:var(--teal); }
+    .add-guide code { background:rgba(232,119,34,0.1); border:1px solid var(--border); border-radius:4px; padding:2px 6px; font-size:0.78rem; color:var(--teal); }
     /* ── Curadoria externa ── */
     .section-sep { margin:72px 0 40px; }
     .section-sep .sec-label { font-size:0.65rem; font-weight:700; letter-spacing:0.2em; color:var(--gray); text-transform:uppercase; display:flex; align-items:center; gap:12px; margin-bottom:10px; }
@@ -64,7 +64,7 @@
     .src-linkedin  { background:rgba(10,102,194,0.15); color:#5b9ef7; border:1px solid rgba(10,102,194,0.25); }
     .src-outro     { background:rgba(107,136,133,0.15);color:var(--gray);border:1px solid rgba(107,136,133,0.2); }
     .ext-meta { font-size:0.7rem; color:var(--gray); }
-    .ext-card h3 { font-size:0.9rem; font-weight:700; line-height:1.45; color:rgba(240,250,249,0.9); flex:1; }
+    .ext-card h3 { font-size:0.9rem; font-weight:700; line-height:1.45; color:rgba(240,244,255,0.9); flex:1; }
     .ext-card p  { font-size:0.78rem; color:var(--gray); line-height:1.55; }
     .ext-link { font-size:0.75rem; font-weight:700; color:var(--gray); display:flex; align-items:center; gap:5px; margin-top:2px; }
     .ext-link:hover { color:var(--teal); }
@@ -76,7 +76,7 @@
 </head>
 <body>
 <nav>
-  <a href="/" class="nav-logo"><svg style="height:34px;width:auto;" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="bvg" x1="2" y1="3" x2="34" y2="33" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#00CFC0"/><stop offset="100%" stop-color="#00a89e"/></linearGradient></defs><path d="M3,4 L18,32 L33,4" stroke="url(#bvg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>VORTEX</a>
+  <a href="/" class="nav-logo"><svg style="height:34px;width:auto;" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="bvg" x1="2" y1="3" x2="34" y2="33" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#E87722"/><stop offset="100%" stop-color="#C0611A"/></linearGradient></defs><path d="M3,4 L18,32 L33,4" stroke="url(#bvg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>VORTEX</a>
   <a href="/" class="nav-back">← Voltar ao site</a>
 </nav>
 
