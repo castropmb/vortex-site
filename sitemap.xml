@@ -2,39 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://vortex-site-swart.vercel.app/</loc>
-    <lastmod>2026-07-02</lastmod>
+    <loc>https://vortexid.com.br/</loc>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://vortex-site-swart.vercel.app/blog</loc>
-    <lastmod>2026-07-02</lastmod>
+    <loc>https://vortexid.com.br/blog</loc>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://vortex-site-swart.vercel.app/blog/nr-36-nova-portaria-rfid</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://vortexid.com.br/blog/nr-36-nova-portaria-rfid</loc>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vortex-site-swart.vercel.app/blog/custo-acao-trabalhista-camara-fria</loc>
-    <lastmod>2026-06-27</lastmod>
+    <loc>https://vortexid.com.br/blog/custo-acao-trabalhista-camara-fria</loc>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vortex-site-swart.vercel.app/blog/rfid-passivo-camaras-frias</loc>
-    <lastmod>2026-06-20</lastmod>
+    <loc>https://vortexid.com.br/blog/rfid-passivo-camaras-frias</loc>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vortex-site-swart.vercel.app/blog/12-minutos-custo-produtividade-frigorifico</loc>
-    <lastmod>2026-06-13</lastmod>
+    <loc>https://vortexid.com.br/blog/12-minutos-custo-produtividade-frigorifico</loc>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vortexid.com.br/privacidade</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

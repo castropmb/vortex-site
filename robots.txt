@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /node_modules/
 
-Sitemap: https://vortex-site-swart.vercel.app/sitemap.xml
+Sitemap: https://vortexid.com.br/sitemap.xml
