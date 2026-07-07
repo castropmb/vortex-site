@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Consent Mode v2 — defaults negados ANTES de qualquer tag -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+  </script>
+  <script src="/consent.js" defer></script>
+
   <title>RFID passivo em câmaras frias: como funciona a −30°C sem bateria | Blog VORTEX</title>
   <meta name="description" content="Tags RFID passivas funcionam em congelamento extremo sem bateria, sem manutenção. Entenda a física por trás da tecnologia usada pelo VORTEX em frigoríficos." />
   <meta name="robots" content="index, follow" />
@@ -176,7 +188,7 @@
 </article>
 
 <footer>
-  <p>© 2026 VORTEX — Grupo PBC TECH · Brasil RFID · <a href="/" style="color:var(--teal);">vortexid.com.br</a> · <a href="/privacidade" style="color:var(--gray);">Privacidade</a></p>
+  <p>© 2026 VORTEX — Grupo PBC TECH · Brasil RFID · <a href="/" style="color:var(--teal);">vortexid.com.br</a> · <a href="/privacidade" style="color:var(--gray);">Privacidade</a> · <a href="#" data-consent-prefs style="color:var(--gray);">Cookies</a></p>
 </footer>
 </body>
 </html>

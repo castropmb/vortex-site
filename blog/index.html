@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Consent Mode v2 — defaults negados ANTES de qualquer tag -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+  </script>
+  <script src="/consent.js" defer></script>
+
   <title>Blog VORTEX — NR-36, RFID e Controle de Pausas | Grupo PBC TECH</title>
   <meta name="description" content="Conteúdo técnico e jurídico sobre NR-36, controle de pausas térmicas, RFID industrial e gestão de frigoríficos. Publicado 2x por semana pela equipe VORTEX." />
   <meta name="robots" content="index, follow" />
@@ -217,7 +229,7 @@
 </main>
 
 <footer>
-  <p>© 2026 VORTEX — Grupo PBC TECH · Brasil RFID · <a href="/" style="color:var(--teal);">Voltar ao site</a></p>
+  <p>© 2026 VORTEX — Grupo PBC TECH · Brasil RFID · <a href="/" style="color:var(--teal);">Voltar ao site</a> · <a href="/privacidade" style="color:var(--gray);">Privacidade</a> · <a href="#" data-consent-prefs style="color:var(--gray);">Cookies</a></p>
 </footer>
 </body>
 </html>

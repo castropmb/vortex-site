@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Consent Mode v2 — defaults negados ANTES de qualquer tag -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+  </script>
+  <script src="/consent.js" defer></script>
+
   <title>VORTEX — Intelligent Break Management | Controle de Pausas RFID</title>
   <meta name="description" content="VORTEX: controle automatizado de pausas térmicas com RFID. Conformidade NR-36, validade jurídica, ROI comprovado. Empresa do Grupo PBC TECH — Brasil RFID." />
   <!-- Favicon SVG -->
@@ -1437,6 +1449,7 @@
       <p>© 2026 VORTEX — Intelligent Break Management · Grupo PBC TECH</p>
       <div style="display:flex;gap:18px;align-items:center;">
         <a href="/privacidade">Política de Privacidade</a>
+        <a href="#" data-consent-prefs>Preferências de cookies</a>
         <a href="https://instagram.com/vortex_pausas" target="_blank" rel="noopener noreferrer">@vortex_pausas</a>
       </div>
     </div>

@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Consent Mode v2 — defaults negados ANTES de qualquer tag -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+  </script>
+  <script src="/consent.js" defer></script>
+
   <title>Política de Privacidade e Cookies | VORTEX</title>
   <meta name="description" content="Política de Privacidade e Cookies do site VORTEX — como coletamos, usamos e protegemos seus dados pessoais, em conformidade com a LGPD (Lei 13.709/2018)." />
   <meta name="robots" content="index, follow" />
@@ -129,7 +141,7 @@
 </main>
 
 <footer>
-  <p>© 2026 VORTEX — Grupo PBC TECH · Brasil RFID · <a href="/">vortexid.com.br</a></p>
+  <p>© 2026 VORTEX — Grupo PBC TECH · Brasil RFID · <a href="/">vortexid.com.br</a> · <a href="#" data-consent-prefs>Preferências de cookies</a></p>
 </footer>
 </body>
 </html>
