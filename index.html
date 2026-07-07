@@ -966,6 +966,11 @@
   .pp-label{font-size:0.72rem;color:var(--gray);font-weight:600;letter-spacing:0.08em;}
   .pp-val{font-size:1.1rem;font-weight:700;color:var(--teal);}
   .roi-disclaimer-box{background:rgba(251,191,36,0.05);border:1px solid rgba(251,191,36,0.18);border-radius:10px;padding:12px 16px;margin-top:20px;font-size:0.74rem;color:rgba(251,191,36,0.75);line-height:1.6;}
+  .roi-gate-head{display:flex;gap:14px;align-items:center;background:rgba(232,119,34,0.06);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:18px;}
+  .roi-gate-lock{font-size:1.5rem;line-height:1;}
+  .roi-gate-title{font-size:0.98rem;font-weight:700;color:var(--white);line-height:1.35;}
+  .roi-gate-sub{font-size:0.8rem;color:var(--gray);margin-top:3px;line-height:1.5;}
+  #roiGateForm .form-btn{margin-top:6px;}
   @media(max-width:768px){.roi-results-grid{grid-template-columns:1fr;}.roi-presets{gap:8px;}.bi-live-stats{gap:12px;}}
 
   /* ── Blog ── */
@@ -1163,7 +1168,7 @@
       </div>
       <div class="roi-custom-wrap" id="customWrap" style="display:none;">
         <label>Número de colaboradores:</label>
-        <input type="number" class="roi-custom-input" id="customInput" min="10" max="50000" placeholder="Ex: 750" oninput="setPreset(parseInt(this.value)||0)" />
+        <input type="number" class="roi-custom-input" id="customInput" min="10" max="50000" placeholder="Ex: 750" oninput="onCustomInput(this.value)" />
       </div>
 
       <!-- Resultados -->
@@ -1198,6 +1203,29 @@
           </div>
         </div>
         <p style="text-align:center;font-size:0.72rem;color:var(--gray);margin-top:16px;line-height:1.6;">Premissas: 3 min de excesso por pausa × 3 pausas térmicas + 3 min na refeição = 12 min/colaborador/dia · 70% efetividade real estimada · R$22/h custo médio com encargos CLT · risco jurídico com probabilidade ponderada. Mensalidade de R$3.200 a R$8.000 conforme porte da operação. Valores conservadores — solicite uma proposta personalizada.</p>
+      </div>
+
+      <!-- Gate de lead — libera o resultado após o cadastro -->
+      <div id="roiGate" style="display:none;margin-top:24px;">
+        <div class="roi-gate-head">
+          <div class="roi-gate-lock" aria-hidden="true">🔒</div>
+          <div>
+            <div class="roi-gate-title">Seu resultado para <span id="gateN" style="color:var(--teal);">—</span> colaboradores está pronto.</div>
+            <div class="roi-gate-sub">Informe seus dados para ver a estimativa completa e receber uma proposta personalizada.</div>
+          </div>
+        </div>
+        <form id="roiGateForm" onsubmit="submitRoiGate(event)">
+          <div class="form-row">
+            <div class="fg"><label for="g-nome">NOME *</label><input id="g-nome" type="text" placeholder="Seu nome completo" required /></div>
+            <div class="fg"><label for="g-empresa">EMPRESA / FRIGORÍFICO *</label><input id="g-empresa" type="text" placeholder="Nome da empresa" required /></div>
+          </div>
+          <div class="form-row">
+            <div class="fg"><label for="g-email">E-MAIL *</label><input id="g-email" type="email" placeholder="seu@email.com.br" required /></div>
+            <div class="fg"><label for="g-telefone">WHATSAPP *</label><input id="g-telefone" type="tel" placeholder="(00) 00000-0000" required /></div>
+          </div>
+          <button type="submit" class="form-btn">VER MEU RESULTADO →</button>
+          <p class="form-priv">🔒 Seus dados estão protegidos. Sem spam, sem compartilhamento.</p>
+        </form>
       </div>
 
       <div id="roiPlaceholder" style="text-align:center;padding:48px 0;color:var(--gray);">
@@ -1556,33 +1584,42 @@
       currency: 'BRL'
     };
 
-    // Tenta com CORS normal; se bloqueado pelo browser, reenvia sem leitura de resposta
-    fetch(DATACRAZY_WEBHOOK, {
-      method:  'POST',
-      headers: {'Content-Type': 'application/json'},
-      body:    JSON.stringify(data),
-    })
-    .then(r => {
-      // Mesmo que o CORS bloqueie a leitura, o dado chegou ao servidor
-      showSuccess(form, btn);
-    })
-    .catch(err => {
-      // CORS opaque ou erro de rede — reenvia no-cors (dado chega, resposta não é lida)
-      if (err instanceof TypeError) {
-        fetch(DATACRAZY_WEBHOOK, {
-          method: 'POST',
-          mode:   'no-cors',
-          headers: {'Content-Type': 'application/json'},
-          body:   JSON.stringify(data),
-        }).then(() => showSuccess(form, btn))
-          .catch(() => showSuccess(form, btn)); // webhook recebeu mas browser bloqueou leitura
-      } else {
+    postLead(data)
+      .then(() => showSuccess(form, btn))
+      .catch(err => {
         console.error('[VORTEX] Erro ao enviar lead:', err);
         btn.textContent = 'ERRO — TENTE NOVAMENTE';
         btn.disabled = false;
         setTimeout(() => { btn.textContent = 'QUERO A DEMONSTRAÇÃO GRATUITA →'; }, 3000);
+      });
+  }
+
+  // Envio ao Datacrazy — CORS normal e fallback no-cors (dado chega, resposta não é lida)
+  function postLead(data) {
+    return fetch(DATACRAZY_WEBHOOK, {
+      method:  'POST',
+      headers: {'Content-Type': 'application/json'},
+      body:    JSON.stringify(data),
+    }).catch(err => {
+      if (err instanceof TypeError) {
+        return fetch(DATACRAZY_WEBHOOK, {
+          method: 'POST',
+          mode:   'no-cors',
+          headers: {'Content-Type': 'application/json'},
+          body:   JSON.stringify(data),
+        });
       }
+      throw err;
     });
+  }
+
+  // Valor estimado do lead pelo nº de colaboradores
+  function leadValueByEmployees(n) {
+    if (n <= 100) return 150;
+    if (n <= 500) return 250;
+    if (n <= 1000) return 300;
+    if (n <= 2000) return 350;
+    return 400;
   }
 
   let pendingLead = null;
@@ -2072,6 +2109,7 @@
     const res=calcROI(n); if(!res) return;
     document.getElementById('roiResults').style.display='block';
     document.getElementById('roiPlaceholder').style.display='none';
+    document.getElementById('roiGate').style.display='none';
     document.getElementById('roiN').textContent=n.toLocaleString('pt-BR');
 
     // Left box
@@ -2104,6 +2142,33 @@
 
   let currentPresetN = 0;
   let roiPreset = 'custom';
+  let pendingRoiN = 0;
+
+  function roiUnlocked() {
+    try { return localStorage.getItem('vortex_lead') === '1'; } catch (e) { return false; }
+  }
+
+  function showPlaceholder() {
+    document.getElementById('roiResults').style.display='none';
+    document.getElementById('roiGate').style.display='none';
+    document.getElementById('roiPlaceholder').style.display='block';
+  }
+
+  // Decide: mostra resultado (se já é lead) ou pede o cadastro (gate)
+  function requestROI(n) {
+    if (n < 10) { showPlaceholder(); return; }
+    if (roiUnlocked()) { updateROI(n); }
+    else { showRoiGate(n); }
+  }
+
+  function showRoiGate(n) {
+    pendingRoiN = n;
+    document.getElementById('gateN').textContent = n.toLocaleString('pt-BR');
+    document.getElementById('roiResults').style.display='none';
+    document.getElementById('roiPlaceholder').style.display='none';
+    document.getElementById('roiGate').style.display='block';
+  }
+
   function setPreset(n, btn) {
     document.querySelectorAll('.roi-preset').forEach(b=>b.classList.remove('active'));
     if(btn) btn.classList.add('active');
@@ -2113,12 +2178,88 @@
       if(cw) cw.style.display='flex';
       const ci=document.getElementById('customInput');
       const val=ci?parseInt(ci.value)||0:0;
-      if(val>=10) updateROI(val); else {document.getElementById('roiResults').style.display='none';document.getElementById('roiPlaceholder').style.display='block';}
+      requestROI(val);
     } else {
       if(cw) cw.style.display='none';
-      if(n>=10) updateROI(n);
+      requestROI(n);
     }
     currentPresetN=n;
+  }
+
+  function onCustomInput(v) {
+    roiPreset = 'custom';
+    requestROI(parseInt(v) || 0);
+  }
+
+  // Envio do gate da calculadora — captura o lead e libera o resultado
+  function submitRoiGate(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn  = form.querySelector('.form-btn');
+    btn.textContent = 'ENVIANDO...';
+    btn.disabled = true;
+
+    const n = pendingRoiN;
+    const res = calcROI(n);
+    const eventId = window.vtxTrack ? window.vtxTrack.uuid() : String(Date.now());
+    const traffic = (window.vtxTrack && window.vtxTrack.traffic) || {};
+
+    const data = {
+      nome:          document.getElementById('g-nome').value.trim(),
+      name:          document.getElementById('g-nome').value.trim(),
+      empresa:       document.getElementById('g-empresa').value.trim(),
+      company:       document.getElementById('g-empresa').value.trim(),
+      email:         document.getElementById('g-email').value.trim(),
+      telefone:      document.getElementById('g-telefone').value.trim(),
+      phone:         document.getElementById('g-telefone').value.trim(),
+      whatsapp:      document.getElementById('g-telefone').value.trim(),
+      colaboradores: String(n),
+      // Contexto do cálculo
+      fonte:                    'calculadora-roi',
+      origem:                   'site-vortex',
+      pipeline:                 'CONTROLE DE PAUSAS',
+      mensalidade_estimada:     res ? res.mensalidadeMensal : null,
+      beneficio_liquido_anual:  res ? res.netAnual : null,
+      relacao_custo_beneficio:  res ? res.ratio : null,
+      pagina:        window.location.href,
+      data_hora:     new Date().toLocaleString('pt-BR'),
+      event_id:      eventId,
+      utm_source:    traffic.utm_source   || null,
+      utm_medium:    traffic.utm_medium   || null,
+      utm_campaign:  traffic.utm_campaign || null,
+      utm_content:   traffic.utm_content  || null,
+      utm_term:      traffic.utm_term     || null,
+      gclid:         traffic.gclid        || null,
+      fbclid:        traffic.fbclid       || null,
+      referrer:      traffic.referrer     || null,
+    };
+
+    postLead(data)
+      .then(() => {
+        // Conversão-macro + libera a calculadora para esta sessão
+        if (window.vtxTrack) {
+          window.vtxTrack.push({
+            event: 'generate_lead',
+            event_id: eventId,
+            lead_segment: null,
+            lead_company_size: String(n),
+            value: leadValueByEmployees(n),
+            currency: 'BRL',
+            lead_source: 'calculadora-roi'
+          });
+          window.vtxTrack.markLead();
+        }
+        form.reset();
+        btn.textContent = 'VER MEU RESULTADO →';
+        btn.disabled = false;
+        updateROI(n); // revela o resultado
+      })
+      .catch(err => {
+        console.error('[VORTEX] Erro ao enviar lead (ROI):', err);
+        btn.textContent = 'ERRO — TENTE NOVAMENTE';
+        btn.disabled = false;
+        setTimeout(() => { btn.textContent = 'VER MEU RESULTADO →'; }, 3000);
+      });
   }
 
   // ── Init ──
