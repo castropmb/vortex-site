@@ -15,6 +15,8 @@
   </script>
   <script src="/consent.js" defer></script>
   <script src="/gtm.js"></script>
+  <script src="/tracking.js" defer></script>
+  <script src="/meta-pixel.js" defer></script>
 
   <title>VORTEX — Intelligent Break Management | Controle de Pausas RFID</title>
   <meta name="description" content="VORTEX: controle automatizado de pausas térmicas com RFID. Conformidade NR-36, validade jurídica, ROI comprovado. Empresa do Grupo PBC TECH — Brasil RFID." />
@@ -677,7 +679,7 @@
       <p class="sec-desc">Uma demonstração real da operação em ambiente industrial — do registro RFID ao relatório com validade jurídica.</p>
       <div class="video-wrap">
         <iframe
-          src="https://www.youtube.com/embed/D3xuR8Kd2Jw?rel=0&modestbranding=1&color=white"
+          src="https://www.youtube.com/embed/D3xuR8Kd2Jw?rel=0&modestbranding=1&color=white&enablejsapi=1"
           title="VORTEX — Sistema de Controle de Pausas em operação"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -1510,6 +1512,10 @@
     btn.textContent = 'ENVIANDO...';
     btn.disabled = true;
 
+    // event_id compartilhado (dedup Pixel + CAPI na etapa 6) e origem da campanha
+    const eventId = window.vtxTrack ? window.vtxTrack.uuid() : String(Date.now());
+    const traffic = (window.vtxTrack && window.vtxTrack.traffic) || {};
+
     const data = {
       // Campos principais do lead
       nome:          form.nome.value.trim(),
@@ -1529,6 +1535,25 @@
       pipeline:      'CONTROLE DE PAUSAS',
       pagina:        window.location.href,
       data_hora:     new Date().toLocaleString('pt-BR'),
+      event_id:      eventId,
+      utm_source:    traffic.utm_source   || null,
+      utm_medium:    traffic.utm_medium   || null,
+      utm_campaign:  traffic.utm_campaign || null,
+      utm_content:   traffic.utm_content  || null,
+      utm_term:      traffic.utm_term     || null,
+      gclid:         traffic.gclid        || null,
+      fbclid:        traffic.fbclid       || null,
+      referrer:      traffic.referrer     || null,
+    };
+
+    // Metadados para o evento generate_lead (disparado em showSuccess)
+    const LEAD_VALUE = { '50 – 100':150, '100 – 500':250, '500 – 1.000':300, '1.000 – 3.000':350, 'Acima de 3.000':400 };
+    pendingLead = {
+      event_id: eventId,
+      lead_segment: form.segmento.value || null,
+      lead_company_size: form.colaboradores.value || null,
+      value: LEAD_VALUE[form.colaboradores.value] || 150,
+      currency: 'BRL'
     };
 
     // Tenta com CORS normal; se bloqueado pelo browser, reenvia sem leitura de resposta
@@ -1560,7 +1585,14 @@
     });
   }
 
+  let pendingLead = null;
   function showSuccess(form, btn) {
+    // Conversão-macro — dispara uma única vez, só no sucesso do envio
+    if (pendingLead && window.vtxTrack) {
+      window.vtxTrack.push(Object.assign({ event: 'generate_lead' }, pendingLead));
+      window.vtxTrack.markLead();
+      pendingLead = null;
+    }
     document.getElementById('successOverlay').classList.add('show');
     form.reset();
     btn.textContent = 'QUERO A DEMONSTRAÇÃO GRATUITA →';
@@ -2065,12 +2097,17 @@
     else if(n<=600) disc='⚠️ Valores calculados com 70% de efetividade conservadora. Operações com maior densidade de portais e turnos longos tendem a ter retorno mais rápido.';
     else disc='⚠️ Em grande escala, cada minuto recuperado por colaborador gera impacto expressivo. O retorno real depende do perfil de pausas e configuração dos portais.';
     document.getElementById('r-disclaimer').innerHTML=disc;
+
+    // Tracking — micro-conversão de intenção
+    if (window.vtxTrack) window.vtxTrack.roiCalculate(res, n, roiPreset);
   }
 
   let currentPresetN = 0;
+  let roiPreset = 'custom';
   function setPreset(n, btn) {
     document.querySelectorAll('.roi-preset').forEach(b=>b.classList.remove('active'));
     if(btn) btn.classList.add('active');
+    roiPreset = (btn && btn.id==='customBtn') ? 'custom' : String(n);
     const cw=document.getElementById('customWrap');
     if(btn && btn.id==='customBtn') {
       if(cw) cw.style.display='flex';
