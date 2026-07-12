@@ -1,25 +1,19 @@
-/* VORTEX — Meta Pixel (instalação direta, consent-gated)
-   Dispara eventos do Meta a partir do dataLayer preenchido por tracking.js.
-   Só inicializa/rastreia quando o usuário aceita "Publicidade" no banner LGPD.
+/* VORTEX — Meta Pixel (Opção B: medição no carregamento)
+   PageView e eventos de conversão disparam já no load, para a campanha
+   não perder medição de quem não interage com o banner de cookies.
+   O banner continua governando o Google/analytics e o remarketing;
+   a medição básica do Meta roda por interesse legítimo.
 
-   NOTA: se um dia o Pixel for configurado dentro do GTM (Etapa 5), REMOVA
-   este arquivo e o <script src="/meta-pixel.js"> das páginas para não
-   disparar os eventos em dobro. */
+   Pixel vinculado ao business PBC (campanha ativa): 1348559673368085.
+   NOTA: se um dia o Pixel for para dentro do GTM, remova este arquivo
+   e o <script src="/meta-pixel.js"> das páginas para não duplicar. */
 (function () {
   'use strict';
-  var PIXEL_ID = '1035418772184441';
-  var loaded = false, pageViewed = false;
-
-  function adConsent() {
-    try {
-      var c = JSON.parse(localStorage.getItem('vortex_consent'));
-      return !!(c && c.ads === true);
-    } catch (e) { return false; }
-  }
+  var PIXEL_ID = '1348559673368085';
+  var pageViewed = false;
 
   function loadPixel() {
-    if (loaded) return;
-    loaded = true;
+    if (window.fbq) return;
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
@@ -31,17 +25,14 @@
     fbq('init', PIXEL_ID);
   }
 
-  function ensurePageView() {
-    if (!adConsent()) return;
+  function start() {
     loadPixel();
     if (!pageViewed) { pageViewed = true; fbq('track', 'PageView'); }
   }
 
   function handle(ev) {
     if (!ev || !ev.event) return;
-    if (ev.event === 'consent_update') { if (ev.consent_ads) ensurePageView(); return; }
-    if (!adConsent()) return;           // sem consentimento de publicidade, não rastreia
-    ensurePageView();
+    start();
     switch (ev.event) {
       case 'generate_lead':
         fbq('track', 'Lead',
@@ -58,11 +49,11 @@
     }
   }
 
-  // PageView no load, se o consentimento já estiver dado
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ensurePageView);
-  else ensurePageView();
+  // Opção B — dispara no carregamento, sem esperar consentimento
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
 
-  // Observa o dataLayer: processa o que já existe e intercepta novos pushes
+  // Observa o dataLayer para os eventos de conversão/engajamento
   var dl = (window.dataLayer = window.dataLayer || []);
   try { dl.forEach(handle); } catch (e) {}
   var origPush = dl.push;
