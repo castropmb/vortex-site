@@ -16,7 +16,13 @@
   <script src="/consent.js" defer></script>
   <script src="/gtm.js"></script>
   <script src="/tracking.js" defer></script>
-  <script src="/meta-pixel.js"></script>
+  <!-- Meta Pixel base — inline, Opção B: dispara no carregamento (interesse legítimo) -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1348559673368085');
+  fbq('track','PageView');
+  </script>
+  <script src="/meta-pixel.js" defer></script>
 
   <title>Política de Privacidade e Cookies | VORTEX</title>
   <meta name="description" content="Política de Privacidade e Cookies do site VORTEX — como coletamos, usamos e protegemos seus dados pessoais, em conformidade com a LGPD (Lei 13.709/2018)." />
