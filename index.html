@@ -1633,9 +1633,16 @@
   let pendingLead = null;
   function showSuccess(form, btn) {
     // Conversão-macro — dispara uma única vez, só no sucesso do envio
-    if (pendingLead && window.vtxTrack) {
-      window.vtxTrack.push(Object.assign({ event: 'generate_lead' }, pendingLead));
-      window.vtxTrack.markLead();
+    if (pendingLead) {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead',
+          { value: pendingLead.value, currency: 'BRL' },
+          { eventID: pendingLead.event_id });
+      }
+      if (window.vtxTrack) {
+        window.vtxTrack.push(Object.assign({ event: 'generate_lead' }, pendingLead));
+        window.vtxTrack.markLead();
+      }
       pendingLead = null;
     }
     document.getElementById('successOverlay').classList.add('show');
@@ -2249,6 +2256,11 @@
     postLead(data)
       .then(() => {
         // Conversão-macro + libera a calculadora para esta sessão
+        if (typeof fbq === 'function') {
+          fbq('track', 'Lead',
+            { value: leadValueByEmployees(n), currency: 'BRL' },
+            { eventID: eventId });
+        }
         if (window.vtxTrack) {
           window.vtxTrack.push({
             event: 'generate_lead',
