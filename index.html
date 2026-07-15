@@ -1222,6 +1222,7 @@
           </div>
         </div>
         <form id="roiGateForm" onsubmit="submitRoiGate(event)">
+          <input type="text" name="_hp" autocomplete="off" style="display:none" tabindex="-1" />
           <div class="form-row">
             <div class="fg"><label for="g-nome">NOME *</label><input id="g-nome" type="text" placeholder="Seu nome completo" required /></div>
             <div class="fg"><label for="g-empresa">EMPRESA / FRIGORÍFICO *</label><input id="g-empresa" type="text" placeholder="Nome da empresa" required /></div>
@@ -1358,6 +1359,7 @@
         <h3>Solicitar demonstração</h3>
         <p>Nossa equipe retorna em até 24 horas úteis.</p>
         <form id="leadForm" method="post" onsubmit="submitForm(event)">
+          <input type="text" name="_hp" autocomplete="off" style="display:none" tabindex="-1" />
           <div class="form-row">
             <div class="fg"><label for="f-nome">NOME *</label><input id="f-nome" type="text" name="nome" placeholder="Seu nome completo" required /></div>
             <div class="fg"><label for="f-cargo">CARGO *</label><input id="f-cargo" type="text" name="cargo" placeholder="Ex: Diretor Industrial" required /></div>
@@ -1537,8 +1539,11 @@
   }
 
   // Form
-  // ── Datacrazy webhook ──
-  const DATACRAZY_WEBHOOK = 'https://api.datacrazy.io/v1/crm/api/crm/integrations/webhook/business/d44e664b-9ca3-4ab8-9f49-fc596ee0421c';
+  // ── Utilitários ──
+  function getCookie(name) {
+    const m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return m ? m[2] : null;
+  }
 
   function submitForm(e) {
     e.preventDefault();
@@ -1579,15 +1584,21 @@
       gclid:         traffic.gclid        || null,
       fbclid:        traffic.fbclid       || null,
       referrer:      traffic.referrer     || null,
+      fbp:           getCookie('_fbp')    || null,
+      fbc:           getCookie('_fbc')    || (traffic.fbclid ? 'fb.1.' + Date.now() + '.' + traffic.fbclid : null),
+      _hp:           '',
     };
 
     // Metadados para o evento generate_lead (disparado em showSuccess)
     const LEAD_VALUE = { '50 – 100':150, '100 – 500':250, '500 – 1.000':300, '1.000 – 3.000':350, 'Acima de 3.000':400 };
+    const leadValue = LEAD_VALUE[form.colaboradores.value] || 150;
+    data.lead_value = leadValue;
+
     pendingLead = {
       event_id: eventId,
       lead_segment: form.segmento.value || null,
       lead_company_size: form.colaboradores.value || null,
-      value: LEAD_VALUE[form.colaboradores.value] || 150,
+      value: leadValue,
       currency: 'BRL'
     };
 
@@ -1601,22 +1612,12 @@
       });
   }
 
-  // Envio ao Datacrazy — CORS normal e fallback no-cors (dado chega, resposta não é lida)
+  // Envio ao /api/lead (serverless) — Datacrazy + Meta CAPI server-side
   function postLead(data) {
-    return fetch(DATACRAZY_WEBHOOK, {
+    return fetch('/api/lead', {
       method:  'POST',
       headers: {'Content-Type': 'application/json'},
       body:    JSON.stringify(data),
-    }).catch(err => {
-      if (err instanceof TypeError) {
-        return fetch(DATACRAZY_WEBHOOK, {
-          method: 'POST',
-          mode:   'no-cors',
-          headers: {'Content-Type': 'application/json'},
-          body:   JSON.stringify(data),
-        });
-      }
-      throw err;
     });
   }
 
@@ -2239,6 +2240,10 @@
       gclid:         traffic.gclid        || null,
       fbclid:        traffic.fbclid       || null,
       referrer:      traffic.referrer     || null,
+      fbp:           getCookie('_fbp')    || null,
+      fbc:           getCookie('_fbc')    || (traffic.fbclid ? 'fb.1.' + Date.now() + '.' + traffic.fbclid : null),
+      lead_value:    leadValueByEmployees(n),
+      _hp:           '',
     };
 
     postLead(data)
