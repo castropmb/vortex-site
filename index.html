@@ -232,6 +232,14 @@
     .trust-items { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
     .trust-item { font-size: 0.76rem; color: rgba(255,255,255,0.35); font-weight: 600; letter-spacing: 0.06em; display: flex; align-items: center; gap: 6px; }
 
+    /* ── CLIENTES ── */
+    .clients-bar { padding: 40px 48px; background: var(--black); border-bottom: 1px solid var(--border); }
+    .clients-inner { max-width: 1240px; margin: 0 auto; text-align: center; }
+    .clients-label { font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gray); font-weight: 700; text-transform: uppercase; margin-bottom: 24px; }
+    .clients-list { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .client-name { font-size: 0.88rem; font-weight: 700; color: rgba(240,244,255,0.55); letter-spacing: 0.04em; padding: 10px 22px; border: 1px solid rgba(232,119,34,0.2); border-radius: 8px; background: rgba(232,119,34,0.04); transition: color .2s, border-color .2s; }
+    .client-name:hover { color: rgba(240,244,255,0.85); border-color: rgba(232,119,34,0.45); }
+
     /* ── COUNTERS ── */
     .counters-section { background: var(--dark); padding: 60px 48px; }
     .counters-inner { max-width: 1240px; margin: 0 auto; }
@@ -461,7 +469,7 @@
       .hamburger { display: flex; }
       section { padding: 72px 24px; }
       .counters-section { padding: 56px 24px; }
-      .trust-bar, .grupo-section { padding: 28px 24px; }
+      .trust-bar, .grupo-section, .clients-bar { padding: 28px 24px; }
       footer { padding: 48px 24px 24px; }
       .hero { padding: 100px 24px 60px; }
       .hero-inner { grid-template-columns: 1fr; gap: 44px; }
@@ -673,6 +681,18 @@
         <div class="counter-big" id="cnt-uptime">99,8%</div>
         <div class="counter-sub">de disponibilidade do sistema — operação crítica ininterrupta</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENTES -->
+<div class="clients-bar">
+  <div class="clients-inner">
+    <div class="clients-label">Empresas que confiam no VORTEX</div>
+    <div class="clients-list">
+      <span class="client-name">Grupo GTF</span>
+      <span class="client-name">Abatedouro de Aves Cvale</span>
+      <span class="client-name">Grupo Somave</span>
     </div>
   </div>
 </div>
