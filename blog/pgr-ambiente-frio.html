@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+  </script>
+  <script src="/consent.js" defer></script>
+  <script src="/gtm.js"></script>
+  <script src="/tracking.js" defer></script>
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1348559673368085');
+  fbq('track','PageView');
+  </script>
+  <script src="/meta-pixel.js" defer></script>
+
+  <title>PGR em Ambientes Frios: Como Elaborar o Programa de Gerenciamento de Riscos | Blog VORTEX</title>
+  <meta name="description" content="Saiba como elaborar o PGR para frigoríficos e câmaras frias: NR-1 (2021), NR-36 e NR-15 integradas, medição de temperatura, hierarquia de controles e pausas térmicas documentadas." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://vortexid.com.br/blog/pgr-ambiente-frio" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/logo.png" type="image/png" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="PGR em Ambientes Frios: Como Elaborar o Programa de Gerenciamento de Riscos" />
+  <meta property="og:description" content="Guia completo para elaborar o PGR de frigoríficos: NR-1 (2021) + NR-36 + NR-15, medição de temperatura, hierarquia de controles e como gerar dados automáticos para o PGR." />
+  <meta property="og:url" content="https://vortexid.com.br/blog/pgr-ambiente-frio" />
+  <meta property="og:image" content="https://vortexid.com.br/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "PGR em Ambientes Frios: Como Elaborar o Programa de Gerenciamento de Riscos",
+    "description": "Saiba como elaborar o PGR para frigoríficos e câmaras frias: NR-1 (2021), NR-36 e NR-15 integradas, medição de temperatura, hierarquia de controles e pausas térmicas documentadas.",
+    "datePublished": "2026-08-28",
+    "dateModified": "2026-08-28",
+    "author": { "@type": "Organization", "name": "VORTEX — Grupo PBC TECH" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "VORTEX",
+      "logo": { "@type": "ImageObject", "url": "https://vortexid.com.br/logo.png" }
+    },
+    "url": "https://vortexid.com.br/blog/pgr-ambiente-frio",
+    "mainEntityOfPage": "https://vortexid.com.br/blog/pgr-ambiente-frio"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root { --teal:#E87722; --silver:#AAAAAA; --black:#111524; --dark:#1A1F3C; --card:#1F2548; --border:rgba(232,119,34,0.18); --gray:#8FA0C0; --white:#F0F4FF; }
+    body { font-family:'Space Grotesk',sans-serif; background:var(--black); color:var(--white); line-height:1.7; }
+    a { color:var(--teal); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(17,21,36,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:70px; }
+    .nav-logo { display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.1rem; letter-spacing:0.12em; color:var(--white); }
+    .nav-logo img { height:46px; width:auto; mix-blend-mode:screen; }
+    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
+    .nav-links a { color:var(--gray); font-size:0.82rem; letter-spacing:0.07em; font-weight:500; transition:color 0.2s; text-decoration:none; }
+    .nav-links a:hover, .nav-links a.active { color:var(--teal); }
+    .nav-cta { background:var(--teal) !important; color:#000 !important; padding:9px 20px; border-radius:50px; font-weight:700 !important; font-size:0.78rem !important; letter-spacing:0.1em !important; }
+    .nav-cta:hover { opacity:0.9; text-decoration:none; }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .hamburger span { display:block; width:22px; height:2px; background:var(--white); border-radius:2px; }
+    .breadcrumb { font-size:0.75rem; color:var(--gray); margin-bottom:20px; }
+    .breadcrumb a { color:var(--gray); }
+    .breadcrumb span { color:var(--teal); }
+    article { max-width:740px; margin:0 auto; padding:120px 24px 80px; }
+    .art-tag { font-size:0.65rem; font-weight:700; letter-spacing:0.18em; color:var(--teal); text-transform:uppercase; margin-bottom:10px; }
+    .art-meta { font-size:0.78rem; color:var(--gray); margin-bottom:24px; }
+    h1 { font-size:clamp(1.6rem,3.5vw,2.5rem); font-weight:700; line-height:1.25; margin-bottom:20px; }
+    .art-intro { font-size:1.05rem; color:rgba(240,250,249,0.75); margin-bottom:40px; padding-bottom:32px; border-bottom:1px solid var(--border); }
+    h2 { font-size:1.25rem; font-weight:700; color:var(--teal); margin:40px 0 14px; }
+    h3 { font-size:1rem; font-weight:700; margin:28px 0 10px; color:var(--white); }
+    p { margin-bottom:18px; color:rgba(240,250,249,0.85); }
+    ul, ol { padding-left:22px; margin-bottom:18px; color:rgba(240,250,249,0.85); }
+    li { margin-bottom:8px; }
+    blockquote { border-left:3px solid var(--teal); padding:14px 20px; background:rgba(232,119,34,0.06); border-radius:0 8px 8px 0; margin:24px 0; font-size:0.95rem; color:rgba(240,250,249,0.75); font-style:italic; }
+    .highlight-box { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin:28px 0; }
+    .highlight-box strong { color:var(--teal); }
+    .highlight-box p { margin-bottom:0; }
+    .law-box { background:linear-gradient(135deg,rgba(232,119,34,0.08),rgba(232,119,34,0.03)); border:1px solid rgba(232,119,34,0.25); border-radius:12px; padding:24px; margin:28px 0; }
+    .law-box .law-label { font-size:0.6rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal); margin-bottom:10px; }
+    .law-box p { color:rgba(240,250,249,0.9); font-size:0.95rem; font-style:italic; margin-bottom:0; }
+    .cta-box { background:linear-gradient(135deg,rgba(232,119,34,0.1),rgba(232,119,34,0.04)); border:1px solid rgba(232,119,34,0.3); border-radius:16px; padding:32px; text-align:center; margin:52px 0 0; }
+    .cta-box h3 { font-size:1.2rem; margin-bottom:12px; color:var(--white); }
+    .cta-box p { color:var(--gray); margin-bottom:20px; }
+    .cta-btn { display:inline-block; background:var(--teal); color:#000; font-weight:700; font-size:0.88rem; padding:12px 28px; border-radius:8px; letter-spacing:0.06em; text-decoration:none; }
+    .cta-btn:hover { opacity:0.9; text-decoration:none; }
+    .blog-nav { display:flex; justify-content:space-between; gap:16px; margin-top:56px; padding-top:32px; border-top:1px solid var(--border); }
+    .blog-nav a { font-size:0.82rem; color:var(--gray); }
+    .blog-nav a:hover { color:var(--teal); }
+    footer { text-align:center; padding:40px 24px; border-top:1px solid var(--border); color:var(--gray); font-size:0.8rem; margin-top:40px; }
+    footer a { color:var(--teal); }
+    @media(max-width:768px) { nav{padding:0 16px;} .nav-links{display:none;} .hamburger{display:flex;} }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo"><img src="/logo.png" alt="VORTEX" width="46" height="46" /></a>
+  <ul class="nav-links">
+    <li><a href="/#como-funciona">Como Funciona</a></li>
+    <li><a href="/#funcionalidades">NR-36</a></li>
+    <li><a href="/blog" class="active">Blog</a></li>
+    <li><a href="/#demo" class="nav-cta">AGENDAR DEMO</a></li>
+  </ul>
+  <button class="hamburger" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<article itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="breadcrumb"><a href="/blog">Blog</a> › <span>Normas Técnicas</span></div>
+  <div class="art-tag">Normas Técnicas</div>
+  <div class="art-meta">
+    <time itemprop="datePublished" datetime="2026-08-28">28 Agosto 2026</time> · 11 min leitura · Por <span itemprop="author">Equipe VORTEX</span>
+  </div>
+
+  <h1 itemprop="headline">PGR em Ambientes Frios: Como Elaborar o Programa de Gerenciamento de Riscos</h1>
+
+  <p class="art-intro" itemprop="description">
+    Com a atualização da NR-1 em 2021, o antigo PPRA foi substituído pelo PGR — um documento mais abrangente e orientado por resultados. Para frigoríficos e câmaras frias, o PGR precisa contemplar simultaneamente agentes físicos (temperatura), riscos ergonômicos e riscos de acidente, integrando NR-1, NR-36 e NR-15. Saiba como estruturar esse documento e como um sistema digital de controle de pausas contribui diretamente para o seu conteúdo.
+  </p>
+
+  <h2>O Que é o PGR e Como Substituiu o PPRA</h2>
+  <p>O Programa de Gerenciamento de Riscos (PGR) foi introduzido pela atualização da NR-1 publicada em novembro de 2021 (Portaria SEPRT nº 6.730/2020, com vigência postergada). Ele substitui o antigo Programa de Prevenção de Riscos Ambientais (PPRA), que vigorava desde 1994 sob a NR-9.</p>
+  <p>A diferença fundamental é a abordagem: o PPRA focava em agentes ambientais (físicos, químicos e biológicos) com viés de mensuração. O PGR amplia o escopo para <em>todos os riscos ocupacionais</em> — incluindo ergonômicos e de acidente — e exige, além do inventário, um plano de ação estruturado com responsáveis, prazos e indicadores de eficácia.</p>
+  <div class="highlight-box">
+    <strong>Dois documentos obrigatórios do PGR:</strong>
+    <p>O PGR é composto por (1) <strong>Inventário de Riscos Ocupacionais</strong> — identificação e avaliação de todos os riscos — e (2) <strong>Plano de Ação</strong> — medidas de prevenção, prazos e responsáveis. Ambos devem ser mantidos atualizados e disponíveis para fiscalização a qualquer momento.</p>
+  </div>
+
+  <h2>Por Que Ambientes Frios Têm Inventário de Riscos Específico</h2>
+  <p>Câmaras frias e ambientes de abate refrigerado concentram múltiplos riscos que se sobrepõem e potencializam uns aos outros. Um trabalhador em uma câmara de –18 °C não está apenas exposto ao frio: ele manuseia cargas pesadas em postura forçada, em piso escorregadio, com EPIs que reduzem destreza e mobilidade.</p>
+  <p>No inventário do PGR, esses riscos devem ser classificados separadamente por grupo:</p>
+  <ul>
+    <li><strong>Agente físico — temperatura:</strong> exposição a temperaturas abaixo de 15 °C (NR-15 Anexo 9) com potencial de hipotermia, dormência e lesões musculoesqueléticas agravadas pelo frio</li>
+    <li><strong>Risco ergonômico:</strong> postura forçada, repetitividade, esforço físico intenso com musculatura já comprometida pelo frio</li>
+    <li><strong>Risco de acidente:</strong> piso molhado/congelado, visibilidade reduzida por vapores de frio, quedas, colisão com equipamentos refrigerados</li>
+    <li><strong>Agente biológico:</strong> contato com microrganismos em ambiente úmido (relevante para câmaras de maturação)</li>
+  </ul>
+
+  <h2>NR-1, NR-36 e NR-15 Anexo 9: Como os Três Interagem no PGR</h2>
+  <p>Uma das maiores dificuldades dos técnicos de segurança em frigoríficos é integrar corretamente as três normas no mesmo documento de PGR. Elas não são concorrentes — são complementares e todas se aplicam simultaneamente.</p>
+  <div class="law-box">
+    <div class="law-label">NR-1 (2021) — Base legal do PGR</div>
+    <p>"O empregador deve elaborar e implementar o PGR, contendo o inventário de riscos ocupacionais e o plano de ação, considerando as normas regulamentadoras específicas aplicáveis à atividade." (NR-1.5.1)</p>
+  </div>
+  <div class="law-box">
+    <div class="law-label">NR-36 — Especificidades do setor frigorífico</div>
+    <p>"O empregador deve realizar avaliações dos riscos ocupacionais de natureza ergonômica, física, química, biológica e de acidente a que estão sujeitos os trabalhadores." (NR-36.5.1) — essas avaliações alimentam diretamente o inventário do PGR.</p>
+  </div>
+  <div class="law-box">
+    <div class="law-label">NR-15 Anexo 9 — Trabalho em frio (insalubridade)</div>
+    <p>Define as condições de insalubridade por exposição ao frio (temperaturas inferiores a 15 °C) e os critérios para adicional de insalubridade. Os dados coletados para a NR-15 devem constar no inventário de riscos do PGR como avaliação quantitativa do agente físico temperatura.</p>
+  </div>
+  <p>Na prática, a integração funciona assim: a NR-36 define <em>o que</em> avaliar no setor, a NR-15 define <em>como</em> avaliar o agente físico temperatura, e a NR-1 define <em>como documentar</em> tudo isso no PGR e estabelecer plano de ação.</p>
+
+  <h2>Medição de Temperatura: Exigências Técnicas do PGR</h2>
+  <p>Para que o inventário de riscos do PGR seja válido perante uma fiscalização do MTE, as medições de temperatura das câmaras frias precisam atender a requisitos técnicos mínimos:</p>
+  <ul>
+    <li><strong>Instrumento calibrado:</strong> termômetro ou datalogger com certificado de calibração vigente, rastreável à RBC (INMETRO). Medições com equipamentos descalibrados não têm valor probatório</li>
+    <li><strong>Pontos de medição:</strong> ao nível da zona de respiração do trabalhador (entre 75 cm e 1,5 m do piso), no local de trabalho efetivo — não na saída do sistema de refrigeração</li>
+    <li><strong>Frequência de medição:</strong> a NR-15 não define frequência mínima, mas o PGR deve estabelecer uma rotina. A prática recomendada é mínimo diária para câmaras com trabalhadores, com registro timestampado</li>
+    <li><strong>Horários de medição:</strong> incluir início do turno, meio e fim — a temperatura pode variar significativamente com abertura de portas e carga de produto</li>
+    <li><strong>Registros obrigatórios:</strong> temperatura medida, data, hora, local específico, responsável pela medição e equipamento utilizado (número de série)</li>
+  </ul>
+  <div class="highlight-box">
+    <strong>Dataloggers automáticos:</strong>
+    <p>O uso de dataloggers conectados a sistemas de BMS (Building Management System) ou diretamente ao sistema de gestão de pausas é a solução mais robusta. Registros contínuos e automáticos têm muito maior peso probatório do que planilhas preenchidas manualmente.</p>
+  </div>
+
+  <h2>Avaliação Quantitativa vs. Qualitativa do Risco Frio</h2>
+  <p>O PGR admite dois tipos de avaliação de risco, e a escolha impacta diretamente nas obrigações documentais:</p>
+  <p><strong>Avaliação qualitativa:</strong> usada quando a exposição é evidentemente acima dos limites (câmara a –20 °C com trabalhadores por horas) e não há dúvida sobre a existência do risco. Nesse caso, o inventário pode registrar o risco como "confirmado" sem medição detalhada, mas o plano de ação deve ser proporcional à gravidade.</p>
+  <p><strong>Avaliação quantitativa:</strong> obrigatória sempre que se queira caracterizar ou afastar a insalubridade (NR-15) ou quando a exposição está em zona de indefinição (temperaturas entre 12 °C e 15 °C). Exige laudos técnicos assinados por engenheiro de segurança ou médico do trabalho com registro no MTE.</p>
+  <blockquote>"Para riscos com potencial de causar danos graves ou irreversíveis, o princípio da precaução deve ser aplicado: na dúvida, considerar o risco como existente e adotar medidas de prevenção." — Interpretação consolidada da NR-1 pelo MTPS</blockquote>
+
+  <h2>Hierarquia de Controle no PGR para Ambientes Frios</h2>
+  <p>O PGR exige que as medidas de prevenção sigam a hierarquia de controles definida na NR-1 (item 1.5.4). Para o risco frio em câmaras frigoríficas, a aplicação prática é:</p>
+  <ol>
+    <li><strong>Eliminação:</strong> geralmente inviável — o frio é inerente ao processo (conservação de alimentos)</li>
+    <li><strong>Substituição:</strong> automação de tarefas realizadas em câmaras frias, reduzindo o tempo de permanência humana (robôs de movimentação, esteiras automatizadas)</li>
+    <li><strong>Controles de engenharia:</strong> vestibulação das câmaras (antecâmaras de equalização térmica), cortinas de ar, aquecimento das áreas de descanso, piso aquecido em pontos críticos, sistema de alarme de temperatura anômala</li>
+    <li><strong>Controles administrativos:</strong> rodízio de funções entre câmara fria e área aquecida, pausas térmicas obrigatórias conforme Art. 253 CLT e NR-36, limitação de jornada em câmaras de temperatura extrema (abaixo de –25 °C)</li>
+    <li><strong>EPI:</strong> vestimenta térmica completa (macacão, luvas, balaclava, calçado isolado), meias térmicas — como última camada de proteção, não como solução principal</li>
+  </ol>
+  <p>O erro mais comum encontrado em fiscalizações é o PGR que menciona apenas EPIs como medida de controle, saltando os níveis anteriores da hierarquia. Auditores do MTE consideram isso insuficiente e podem autuar mesmo que os EPIs sejam fornecidos.</p>
+
+  <h2>Pausas Térmicas no PGR: Documentação Obrigatória</h2>
+  <p>As pausas térmicas previstas no Art. 253 da CLT e detalhadas na NR-36 não são apenas uma obrigação trabalhista — elas são uma <strong>medida administrativa de controle de risco</strong> e, como tal, devem constar explicitamente no PGR.</p>
+  <p>No plano de ação do PGR, as pausas térmicas devem aparecer com:</p>
+  <ul>
+    <li>Descrição da medida: "pausa térmica de 20 minutos em ambiente aquecido (mínimo 24 °C) a cada 1h40 de trabalho em câmara fria inferior a 12 °C"</li>
+    <li>Responsável pela implementação: supervisor de turno / SESMT</li>
+    <li>Prazo de implementação: imediato (já obrigatório por lei)</li>
+    <li>Indicador de eficácia: percentual de conformidade de pausas por turno (meta: 100%)</li>
+    <li>Fonte de evidência: registros do sistema de controle de pausas (manual ou eletrônico)</li>
+  </ul>
+  <div class="highlight-box">
+    <strong>Ponto crítico em fiscalizações:</strong>
+    <p>Auditores do MTE verificam se o PGR menciona as pausas térmicas <em>e</em> se há evidências de sua efetiva implementação. Um PGR que menciona pausas mas não tem registros comprobatórios é tratado como descumprimento tanto da NR-1 quanto do Art. 253 CLT.</p>
+  </div>
+
+  <h2>Revisão Obrigatória do PGR</h2>
+  <p>A NR-1 (item 1.5.3) estabelece que o PGR deve ser revisado:</p>
+  <ul>
+    <li><strong>Anualmente:</strong> revisão periódica obrigatória de todo o inventário de riscos</li>
+    <li><strong>Quando houver mudança no processo produtivo</strong> que altere a exposição a riscos — incluindo: instalação de nova câmara fria, mudança de temperatura operacional de câmara existente, abertura de novo turno (incluindo turno noturno), introdução de novo produto com requisito de temperatura diferente</li>
+    <li><strong>Após acidentes ou doenças ocupacionais</strong> relacionados a riscos já identificados ou novos</li>
+    <li><strong>Após fiscalização do MTE</strong> que identifique não conformidades</li>
+  </ul>
+  <p>Frigoríficos em expansão devem ter um protocolo claro: qualquer obra ou modificação de processo aciona automaticamente a revisão do PGR. A prática recomendada é incluir essa obrigação nas ordens de serviço e contratos de expansão da planta.</p>
+
+  <h2>Responsabilidade do SESMT</h2>
+  <p>O Serviço Especializado em Engenharia de Segurança e Medicina do Trabalho (SESMT) tem papel central na elaboração e manutenção do PGR. Para frigoríficos com mais de 500 empregados, o dimensionamento do SESMT é obrigatório (NR-4), e a elaboração do PGR é sua atribuição principal.</p>
+  <p>Na prática, o SESMT responde por:</p>
+  <ul>
+    <li>Conduzir o inventário de riscos com base em inspeções da planta, análise de processos e consulta aos trabalhadores</li>
+    <li>Coordenar as medições quantitativas de temperatura com empresas de higiene ocupacional credenciadas</li>
+    <li>Redigir o plano de ação com medidas realistas e prazos exequíveis</li>
+    <li>Monitorar os indicadores de eficácia — incluindo percentual de conformidade das pausas térmicas</li>
+    <li>Apresentar o PGR para o CIPA e registrar a aprovação em ata</li>
+  </ul>
+  <blockquote>"O técnico de segurança que assina um PGR sem registros comprobatórios de pausas está expondo a empresa e sua própria habilitação profissional. O CREA pode responder junto ao MTE em caso de documento fraudulento." — Advogado trabalhista especializado em saúde ocupacional</blockquote>
+
+  <h2>Como um Sistema Digital de Pausas Alimenta o PGR Automaticamente</h2>
+  <p>Um sistema eletrônico de controle de pausas térmicas como o VORTEX transforma a gestão do PGR de um exercício burocrático em um processo orientado por dados. Os benefícios práticos são diretos:</p>
+  <ul>
+    <li><strong>Registros automáticos para o inventário:</strong> histórico completo de exposição por trabalhador, câmara e turno — exatamente os dados que o PGR precisa como evidência do agente físico temperatura</li>
+    <li><strong>Indicadores de eficácia em tempo real:</strong> percentual diário/semanal/mensal de conformidade de pausas, que alimenta o plano de ação do PGR sem necessidade de tabulação manual</li>
+    <li><strong>Alertas preventivos:</strong> quando um trabalhador se aproxima do limite de 1h40 sem pausa, o sistema alerta — reduzindo o risco antes que a infração ocorra</li>
+    <li><strong>Relatórios para revisão do PGR:</strong> na revisão anual, o SESMT tem dados objetivos de eficácia das medidas de controle, tornando a revisão mais rápida e tecnicamente fundamentada</li>
+    <li><strong>Defesa em fiscalizações:</strong> registros digitais com timestamp, identificação do trabalhador e confirmação do supervisor têm maior valor probatório do que qualquer planilha</li>
+  </ul>
+
+  <div class="cta-box">
+    <h3>O VORTEX gera dados que o seu PGR precisa</h3>
+    <p>Registros automáticos de exposição, alertas de não conformidade e relatórios prontos para o SESMT. Agende uma demonstração e veja como o VORTEX simplifica sua gestão de compliance de pausas.</p>
+    <a href="/#demo" class="cta-btn">AGENDAR DEMONSTRAÇÃO GRATUITA</a>
+  </div>
+
+  <div class="blog-nav">
+    <a href="/blog">← Todos os artigos</a>
+    <a href="/#demo">Falar com especialista →</a>
+  </div>
+</article>
+
+<footer>
+  <p>© 2026 VORTEX — Grupo PBC TECH · <a href="/">vortexid.com.br</a> · <a href="/privacidade" style="color:var(--gray);">Privacidade</a> · <a href="#" data-consent-prefs style="color:var(--gray);">Cookies</a></p>
+</footer>
+</body>
+</html>

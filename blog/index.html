@@ -61,7 +61,7 @@
     main { padding:120px 24px 80px; max-width:1140px; margin:0 auto; }
 
     /* ── Hero ── */
-    .blog-hero { text-align:center; margin-bottom:64px; }
+    .blog-hero { text-align:center; margin-bottom:48px; }
     .sec-tag { display:inline-flex; align-items:center; gap:8px; font-size:0.7rem; letter-spacing:0.2em; color:var(--teal); font-weight:700; text-transform:uppercase; margin-bottom:14px; }
     .sec-tag::before { content:''; width:18px; height:1px; background:var(--teal); }
     h1 { font-size:clamp(2rem,4vw,3rem); font-weight:700; line-height:1.2; margin-bottom:16px; }
@@ -69,10 +69,24 @@
     @keyframes gradShift { 0%{background-position:0%} 50%{background-position:100%} 100%{background-position:0%} }
     .blog-desc { color:var(--gray); font-size:1rem; max-width:600px; margin:0 auto; }
 
+    /* ── Search & Filter ── */
+    .blog-controls { margin-bottom:36px; display:flex; flex-direction:column; gap:18px; }
+    .search-wrap { position:relative; max-width:560px; margin:0 auto; width:100%; }
+    .search-wrap svg { position:absolute; left:16px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--gray); pointer-events:none; }
+    #blog-search { width:100%; background:var(--card); border:1px solid var(--border); border-radius:50px; padding:13px 20px 13px 44px; font-family:inherit; font-size:0.88rem; color:var(--white); outline:none; transition:border-color 0.2s; }
+    #blog-search::placeholder { color:var(--gray); }
+    #blog-search:focus { border-color:rgba(232,119,34,0.5); }
+    .filter-pills { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+    .pill { background:transparent; border:1px solid var(--border); border-radius:50px; padding:7px 18px; font-family:inherit; font-size:0.74rem; font-weight:600; letter-spacing:0.06em; color:var(--gray); cursor:pointer; transition:all 0.2s; }
+    .pill:hover { border-color:rgba(232,119,34,0.4); color:var(--white); }
+    .pill.active { background:var(--teal); border-color:var(--teal); color:#000; }
+    .results-count { text-align:center; font-size:0.78rem; color:var(--gray); min-height:1.2em; }
+
     /* ── Grid ── */
     .blog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
     .blog-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px; display:flex; flex-direction:column; gap:12px; transition:transform 0.35s cubic-bezier(.22,1,.36,1),box-shadow 0.35s,border-color 0.35s; }
     .blog-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(232,119,34,0.1); border-color:rgba(232,119,34,0.3); }
+    .blog-card.hidden { display:none; }
     .blog-tag { font-size:0.6rem; font-weight:700; letter-spacing:0.16em; color:var(--teal); text-transform:uppercase; }
     .blog-meta { font-size:0.72rem; color:var(--gray); }
     .blog-card h2 { font-size:0.97rem; font-weight:700; line-height:1.45; }
@@ -80,13 +94,25 @@
     .blog-read { font-size:0.8rem; font-weight:700; color:var(--teal); margin-top:4px; }
     .blog-read:hover { text-decoration:underline; }
 
+    /* ── Empty state ── */
+    .empty-state { display:none; text-align:center; padding:60px 24px; color:var(--gray); grid-column:1/-1; }
+    .empty-state svg { width:40px; height:40px; margin:0 auto 16px; opacity:0.4; }
+    .empty-state p { font-size:0.9rem; }
+
     /* ── Footer ── */
     footer { text-align:center; padding:40px 24px; border-top:1px solid var(--border); color:var(--gray); font-size:0.8rem; margin-top:40px; }
     footer a { color:var(--teal); }
 
     /* ── Responsive ── */
     @media(max-width:1024px) { .blog-grid{grid-template-columns:repeat(2,1fr);} }
-    @media(max-width:768px) { .blog-grid{grid-template-columns:1fr;} nav{padding:0 16px;} .nav-links{display:none;} .hamburger{display:flex;} }
+    @media(max-width:768px) {
+      .blog-grid{grid-template-columns:1fr;}
+      nav{padding:0 16px;}
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      .filter-pills { gap:6px; }
+      .pill { font-size:0.68rem; padding:6px 14px; }
+    }
   </style>
 </head>
 <body>
@@ -108,9 +134,31 @@
     <p class="blog-desc">Artigos técnicos e jurídicos sobre pausas térmicas, NR-36, Artigo 253 da CLT e compliance para frigoríficos — publicados pela equipe VORTEX.</p>
   </div>
 
-  <div class="blog-grid">
+  <!-- ── Search + Filters ── -->
+  <div class="blog-controls">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="blog-search" placeholder="Buscar artigos…" autocomplete="off" aria-label="Buscar artigos" />
+    </div>
+    <div class="filter-pills" role="group" aria-label="Filtrar por categoria">
+      <button class="pill active" data-cat="todos">Todos</button>
+      <button class="pill" data-cat="Legislação">Legislação</button>
+      <button class="pill" data-cat="Normas Técnicas">Normas Técnicas</button>
+      <button class="pill" data-cat="NR-36">NR-36</button>
+      <button class="pill" data-cat="Fiscalização">Fiscalização</button>
+      <button class="pill" data-cat="Saúde">Saúde</button>
+      <button class="pill" data-cat="Tecnologia">Tecnologia</button>
+      <button class="pill" data-cat="Prático">Prático</button>
+      <button class="pill" data-cat="Jurisprudência">Jurisprudência</button>
+      <button class="pill" data-cat="Gestão">Gestão</button>
+    </div>
+    <div class="results-count" id="results-count" aria-live="polite"></div>
+  </div>
 
-    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="blog-grid" id="blog-grid">
+
+    <!-- ── Artigo 1 ── -->
+    <article class="blog-card" data-category="Legislação" data-title="Artigo 253 da CLT: Tudo sobre pausas térmicas no frio" data-desc="Conheça o texto completo do Art. 253 da CLT, quem tem direito, como calcular as pausas e as consequências jurídicas do descumprimento em câmaras frias." itemscope itemtype="https://schema.org/BlogPosting">
       <div class="blog-tag">Legislação</div>
       <div class="blog-meta"><time itemprop="datePublished" datetime="2026-01-10">10 Jan 2026</time> · 8 min leitura</div>
       <h2 itemprop="headline">Artigo 253 da CLT: Tudo sobre pausas térmicas no frio</h2>
@@ -118,7 +166,8 @@
       <a href="/blog/artigo-253-clt-pausas-termicas" class="blog-read">Ler artigo →</a>
     </article>
 
-    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+    <!-- ── Artigo 2 ── -->
+    <article class="blog-card" data-category="Normas Técnicas" data-title="NR-36: Guia Completo para Frigoríficos e Abatedouros" data-desc="Tudo sobre a Norma Regulamentadora 36 — escopo, requisitos de pausas, EPIs, monitoramento médico e as penalidades para quem não está em conformidade." itemscope itemtype="https://schema.org/BlogPosting">
       <div class="blog-tag">Normas Técnicas</div>
       <div class="blog-meta"><time itemprop="datePublished" datetime="2026-01-20">20 Jan 2026</time> · 12 min leitura</div>
       <h2 itemprop="headline">NR-36: Guia Completo para Frigoríficos e Abatedouros</h2>
@@ -126,7 +175,8 @@
       <a href="/blog/nr36-guia-completo-frigorificos" class="blog-read">Ler artigo →</a>
     </article>
 
-    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+    <!-- ── Artigo 3 ── -->
+    <article class="blog-card" data-category="NR-36" data-title="Pausas Psicofisiológicas na NR-36: Direitos e Obrigações" data-desc="Entenda o que são as pausas psicofisiológicas exigidas pela NR-36, como elas se somam às pausas térmicas do Art. 253 e como documentar corretamente." itemscope itemtype="https://schema.org/BlogPosting">
       <div class="blog-tag">NR-36</div>
       <div class="blog-meta"><time itemprop="datePublished" datetime="2026-02-05">5 Fev 2026</time> · 7 min leitura</div>
       <h2 itemprop="headline">Pausas Psicofisiológicas na NR-36: Direitos e Obrigações</h2>
@@ -134,7 +184,8 @@
       <a href="/blog/pausas-psicofisiologicas-nr36" class="blog-read">Ler artigo →</a>
     </article>
 
-    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+    <!-- ── Artigo 4 ── -->
+    <article class="blog-card" data-category="Fiscalização" data-title="Multas por Descumprimento de Pausas Térmicas: O que sua empresa pode perder" data-desc="Valores atualizados das multas do MTE, impacto da Súmula 437 do TST, cálculo de passivo trabalhista retroativo e como ações civis públicas podem devastar uma empresa." itemscope itemtype="https://schema.org/BlogPosting">
       <div class="blog-tag">Fiscalização</div>
       <div class="blog-meta"><time itemprop="datePublished" datetime="2026-02-20">20 Fev 2026</time> · 10 min leitura</div>
       <h2 itemprop="headline">Multas por Descumprimento de Pausas Térmicas: O que sua empresa pode perder</h2>
@@ -142,7 +193,8 @@
       <a href="/blog/multas-pausas-termicas-frigorifico" class="blog-read">Ler artigo →</a>
     </article>
 
-    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+    <!-- ── Artigo 5 ── -->
+    <article class="blog-card" data-category="Saúde" data-title="Câmaras Frias: Riscos à Saúde e Obrigações Legais do Empregador" data-desc="Hipotermia, síndrome de Raynaud, doenças respiratórias — conheça os riscos do trabalho em câmaras frias e todas as obrigações legais que recaem sobre o empregador." itemscope itemtype="https://schema.org/BlogPosting">
       <div class="blog-tag">Saúde</div>
       <div class="blog-meta"><time itemprop="datePublished" datetime="2026-03-10">10 Mar 2026</time> · 9 min leitura</div>
       <h2 itemprop="headline">Câmaras Frias: Riscos à Saúde e Obrigações Legais do Empregador</h2>
@@ -150,7 +202,8 @@
       <a href="/blog/camaras-frias-riscos-obrigacoes" class="blog-read">Ler artigo →</a>
     </article>
 
-    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+    <!-- ── Artigo 6 ── -->
+    <article class="blog-card" data-category="Fiscalização" data-title="Como Funciona a Fiscalização do MTE em Frigoríficos" data-desc="O que os auditores do Ministério do Trabalho verificam em uma fiscalização, quais documentos exigem e por que registros em papel não são mais suficientes." itemscope itemtype="https://schema.org/BlogPosting">
       <div class="blog-tag">Fiscalização</div>
       <div class="blog-meta"><time itemprop="datePublished" datetime="2026-03-25">25 Mar 2026</time> · 8 min leitura</div>
       <h2 itemprop="headline">Como Funciona a Fiscalização do MTE em Frigoríficos</h2>
@@ -158,7 +211,8 @@
       <a href="/blog/fiscalizacao-ministerio-trabalho" class="blog-read">Ler artigo →</a>
     </article>
 
-    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+    <!-- ── Artigo 7 ── -->
+    <article class="blog-card" data-category="Saúde" data-title="Saúde do Trabalhador em Ambientes Frios: Riscos e Prevenção" data-desc="Guia completo sobre os riscos à saúde em ambientes refrigerados, sinais de alerta, equipamentos de proteção obrigatórios e programa de monitoramento médico periódico." itemscope itemtype="https://schema.org/BlogPosting">
       <div class="blog-tag">Saúde</div>
       <div class="blog-meta"><time itemprop="datePublished" datetime="2026-04-08">8 Abr 2026</time> · 8 min leitura</div>
       <h2 itemprop="headline">Saúde do Trabalhador em Ambientes Frios: Riscos e Prevenção</h2>
@@ -166,7 +220,8 @@
       <a href="/blog/saude-trabalhador-ambiente-frio" class="blog-read">Ler artigo →</a>
     </article>
 
-    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+    <!-- ── Artigo 8 ── -->
+    <article class="blog-card" data-category="Tecnologia" data-title="RFID no Controle de Pausas Térmicas: Compliance Automatizado" data-desc="Como a tecnologia RFID elimina o registro manual, cria trilha de auditoria juridicamente válida e reduz o risco trabalhista a praticamente zero nos frigoríficos." itemscope itemtype="https://schema.org/BlogPosting">
       <div class="blog-tag">Tecnologia</div>
       <div class="blog-meta"><time itemprop="datePublished" datetime="2026-04-22">22 Abr 2026</time> · 7 min leitura</div>
       <h2 itemprop="headline">RFID no Controle de Pausas Térmicas: Compliance Automatizado</h2>
@@ -174,7 +229,8 @@
       <a href="/blog/rfid-controle-pausas-compliance" class="blog-read">Ler artigo →</a>
     </article>
 
-    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+    <!-- ── Artigo 9 ── -->
+    <article class="blog-card" data-category="Prático" data-title="Como Calcular as Pausas Térmicas Corretamente" data-desc="Passo a passo prático: como aplicar o Art. 253 da CLT no dia a dia, calcular pausas em turnos de 6h, 8h e 12h e evitar as armadilhas mais comuns na gestão de horários." itemscope itemtype="https://schema.org/BlogPosting">
       <div class="blog-tag">Prático</div>
       <div class="blog-meta"><time itemprop="datePublished" datetime="2026-05-06">6 Mai 2026</time> · 6 min leitura</div>
       <h2 itemprop="headline">Como Calcular as Pausas Térmicas Corretamente</h2>
@@ -182,7 +238,8 @@
       <a href="/blog/como-calcular-pausas-termicas" class="blog-read">Ler artigo →</a>
     </article>
 
-    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+    <!-- ── Artigo 10 ── -->
+    <article class="blog-card" data-category="Jurisprudência" data-title="Súmula 437 do TST: Impacto nas Pausas de Frigoríficos" data-desc="A Súmula 437 do TST é a principal arma dos advogados trabalhistas contra frigoríficos. Entenda o que ela determina, o cálculo do passivo gerado e como blindar sua empresa." itemscope itemtype="https://schema.org/BlogPosting">
       <div class="blog-tag">Jurisprudência</div>
       <div class="blog-meta"><time itemprop="datePublished" datetime="2026-05-20">20 Mai 2026</time> · 9 min leitura</div>
       <h2 itemprop="headline">Súmula 437 do TST: Impacto nas Pausas de Frigoríficos</h2>
@@ -190,11 +247,166 @@
       <a href="/blog/sumula-437-tst-impacto-frigorificos" class="blog-read">Ler artigo →</a>
     </article>
 
+    <!-- ── Artigo 11 ── -->
+    <article class="blog-card" data-category="Legislação" data-title="Acidente de Trabalho em Câmara Fria: Responsabilidade Jurídica do Empregador" data-desc="O que configura acidente de trabalho em câmara fria, responsabilidade objetiva e subjetiva, CAT, estabilidade do acidentado e como as pausas térmicas previnem acidentes." itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">Legislação</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-06-05">5 Jun 2026</time> · 10 min leitura</div>
+      <h2 itemprop="headline">Acidente de Trabalho em Câmara Fria: Responsabilidade Jurídica do Empregador</h2>
+      <p itemprop="description">O que configura acidente de trabalho em câmara fria, responsabilidade objetiva e subjetiva, CAT, estabilidade do acidentado e como as pausas térmicas previnem acidentes e reduzem o FAP.</p>
+      <a href="/blog/acidente-trabalho-camara-fria" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <!-- ── Artigo 12 ── -->
+    <article class="blog-card" data-category="Saúde" data-title="LER/DORT em Frigoríficos: O Frio como Fator Agravante Reconhecido pela Justiça" data-desc="Por que o frio agrava LER e DORT, como a vasoconstrição e movimentos repetitivos multiplicam o risco e o papel das pausas térmicas na prevenção de doenças ocupacionais." itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">Saúde</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-06-20">20 Jun 2026</time> · 9 min leitura</div>
+      <h2 itemprop="headline">LER/DORT em Frigoríficos: O Frio como Fator Agravante Reconhecido pela Justiça</h2>
+      <p itemprop="description">Por que o frio agrava LER e DORT, como a vasoconstrição e movimentos repetitivos multiplicam o risco e o papel das pausas térmicas na prevenção de doenças ocupacionais.</p>
+      <a href="/blog/ler-dort-frigorifico-frio" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <!-- ── Artigo 13 ── -->
+    <article class="blog-card" data-category="Normas Técnicas" data-title="NR-17 e Ergonomia em Câmaras Frias: O que Frigoríficos Precisam Atender" data-desc="Como a NR-17 (ergonomia) se aplica ao trabalho em câmaras frias, conflito com a temperatura do posto de trabalho e obrigação de Análise Ergonômica do Trabalho (AET)." itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">Normas Técnicas</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-07-10">10 Jul 2026</time> · 11 min leitura</div>
+      <h2 itemprop="headline">NR-17 e Ergonomia em Câmaras Frias: O que Frigoríficos Precisam Atender</h2>
+      <p itemprop="description">Como a NR-17 (ergonomia) se aplica ao trabalho em câmaras frias, conflito com a temperatura do posto de trabalho e obrigação de Análise Ergonômica do Trabalho (AET).</p>
+      <a href="/blog/nr17-ergonomia-ambiente-frio" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <!-- ── Artigo 14 ── -->
+    <article class="blog-card" data-category="Legislação" data-title="Terceirização em Frigoríficos: Quem é Responsável pelas Pausas Térmicas?" data-desc="A Lei 13.467 permitiu terceirizar qualquer atividade, mas a responsabilidade subsidiária da tomadora persiste. Saiba o que exigir em contrato e como cobrir terceirizados." itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">Legislação</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-07-25">25 Jul 2026</time> · 8 min leitura</div>
+      <h2 itemprop="headline">Terceirização em Frigoríficos: Quem é Responsável pelas Pausas Térmicas?</h2>
+      <p itemprop="description">A Lei 13.467 permitiu terceirizar qualquer atividade, mas a responsabilidade subsidiária da tomadora persiste. Saiba o que exigir em contrato e como cobrir terceirizados automaticamente.</p>
+      <a href="/blog/terceirizacao-pausas-termicas" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <!-- ── Artigo 15 ── -->
+    <article class="blog-card" data-category="Prático" data-title="Centro de Distribuição Refrigerado: Pausas Térmicas e Compliance Trabalhista" data-desc="Art. 253 da CLT se aplica a qualquer câmara frigorífica, não só frigoríficos. Como CDs refrigerados, operadores de empilhadeira e dark stores devem gerir pausas." itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">Prático</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-08-12">12 Ago 2026</time> · 9 min leitura</div>
+      <h2 itemprop="headline">Centro de Distribuição Refrigerado: Pausas Térmicas e Compliance Trabalhista</h2>
+      <p itemprop="description">Art. 253 da CLT se aplica a qualquer câmara frigorífica, não só frigoríficos. Como CDs refrigerados, operadores de empilhadeira e dark stores devem gerir pausas.</p>
+      <a href="/blog/centro-distribuicao-refrigerado" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <!-- ── Artigo 16 ── -->
+    <article class="blog-card" data-category="Normas Técnicas" data-title="PGR em Ambientes Frios: Como Elaborar o Programa de Gerenciamento de Riscos" data-desc="Como estruturar o PGR para câmaras frias conforme NR-1 (2021) + NR-36 + NR-15, hierarquia de controle, revisão anual e como um sistema digital alimenta o PGR automaticamente." itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">Normas Técnicas</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-08-28">28 Ago 2026</time> · 11 min leitura</div>
+      <h2 itemprop="headline">PGR em Ambientes Frios: Como Elaborar o Programa de Gerenciamento de Riscos</h2>
+      <p itemprop="description">Como estruturar o PGR para câmaras frias conforme NR-1 (2021) + NR-36 + NR-15, hierarquia de controle, revisão anual e como um sistema digital alimenta o PGR automaticamente.</p>
+      <a href="/blog/pgr-ambiente-frio" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <!-- ── Artigo 17 ── -->
+    <article class="blog-card" data-category="Legislação" data-title="Adicional Noturno e Pausas Térmicas: Como Ficam os Trabalhadores de Madrugada" data-desc="As pausas térmicas valem igual no turno noturno. Como calcular corretamente em hora noturna reduzida, acumular adicionais e provar cumprimento nas inspeções madrugada." itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">Legislação</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-09-15">15 Set 2026</time> · 8 min leitura</div>
+      <h2 itemprop="headline">Adicional Noturno e Pausas Térmicas: Como Ficam os Trabalhadores de Madrugada</h2>
+      <p itemprop="description">As pausas térmicas valem igual no turno noturno. Como calcular corretamente em hora noturna reduzida, acumular adicionais e provar cumprimento nas inspeções de madrugada.</p>
+      <a href="/blog/adicional-noturno-pausas" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <!-- ── Artigo 18 ── -->
+    <article class="blog-card" data-category="Gestão" data-title="Gestão de Compliance Trabalhista em Frigoríficos de Grande Porte" data-desc="Os 5 pilares do compliance trabalhista em frigoríficos, KPIs de conformidade de pausas, due diligence para M&A e como dados digitais viram defesa jurídica." itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">Gestão</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-09-30">30 Set 2026</time> · 12 min leitura</div>
+      <h2 itemprop="headline">Gestão de Compliance Trabalhista em Frigoríficos de Grande Porte</h2>
+      <p itemprop="description">Os 5 pilares do compliance trabalhista em frigoríficos, KPIs de conformidade de pausas, due diligence para M&A e como os dados digitais de um sistema RFID viram defesa jurídica.</p>
+      <a href="/blog/compliance-trabalhista-frigorifico" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <!-- ── Artigo 19 ── -->
+    <article class="blog-card" data-category="Tecnologia" data-title="Wearables e IoT no Monitoramento Térmico de Trabalhadores em Câmaras Frias" data-desc="A evolução do RFID para IoT e wearables: sensores de temperatura corporal, alertas inteligentes de hipotermia, dashboard em tempo real e integração com PCMSO." itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">Tecnologia</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-10-20">20 Out 2026</time> · 10 min leitura</div>
+      <h2 itemprop="headline">Wearables e IoT no Monitoramento Térmico de Trabalhadores em Câmaras Frias</h2>
+      <p itemprop="description">A evolução do RFID para IoT e wearables: sensores de temperatura corporal, alertas inteligentes de hipotermia, dashboard em tempo real e integração com PCMSO.</p>
+      <a href="/blog/wearables-monitoramento-termico" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <!-- ── Artigo 20 ── -->
+    <article class="blog-card" data-category="Fiscalização" data-title="Checklist Completo de Auditoria Trabalhista para Frigoríficos e Abatedouros" data-desc="Simule uma auditoria do MTE antes que ela aconteça: 5 blocos, pausas térmicas, documentação NR-36, condições físicas, terceirizados e passivo potencial com plano de ação." itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-tag">Fiscalização</div>
+      <div class="blog-meta"><time itemprop="datePublished" datetime="2026-11-05">5 Nov 2026</time> · 10 min leitura</div>
+      <h2 itemprop="headline">Checklist Completo de Auditoria Trabalhista para Frigoríficos e Abatedouros</h2>
+      <p itemprop="description">Simule uma auditoria do MTE antes que ela aconteça: 5 blocos, pausas térmicas, documentação NR-36, condições físicas, terceirizados e passivo potencial com plano de ação.</p>
+      <a href="/blog/checklist-auditoria-trabalhista" class="blog-read">Ler artigo →</a>
+    </article>
+
+    <!-- ── Estado vazio ── -->
+    <div class="empty-state" id="empty-state" aria-live="polite">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <p>Nenhum artigo encontrado.<br>Tente outro termo ou categoria.</p>
+    </div>
+
   </div>
 </main>
 
 <footer>
   <p>© 2026 VORTEX — Grupo PBC TECH · Brasil RFID · <a href="/">vortexid.com.br</a> · <a href="/privacidade" style="color:var(--gray);">Privacidade</a></p>
 </footer>
+
+<script>
+(function(){
+  const searchInput = document.getElementById('blog-search');
+  const pills = document.querySelectorAll('.pill');
+  const cards = document.querySelectorAll('.blog-card');
+  const countEl = document.getElementById('results-count');
+  const emptyEl = document.getElementById('empty-state');
+
+  let activeCategory = 'todos';
+  let searchQuery = '';
+
+  function normalize(str) {
+    return str.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  }
+
+  function applyFilters() {
+    let visible = 0;
+    cards.forEach(function(card) {
+      const cat = card.dataset.category || '';
+      const title = card.dataset.title || '';
+      const desc = card.dataset.desc || '';
+      const categoryMatch = activeCategory === 'todos' || cat === activeCategory;
+      const q = normalize(searchQuery.trim());
+      const textMatch = !q || normalize(title).includes(q) || normalize(desc).includes(q) || normalize(cat).includes(q);
+      if (categoryMatch && textMatch) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    if (visible === 0) {
+      emptyEl.style.display = 'block';
+      countEl.textContent = '';
+    } else {
+      emptyEl.style.display = 'none';
+      countEl.textContent = visible + (visible === 1 ? ' artigo encontrado' : ' artigos encontrados');
+    }
+  }
+
+  pills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      pills.forEach(function(p){ p.classList.remove('active'); });
+      pill.classList.add('active');
+      activeCategory = pill.dataset.cat;
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener('input', function() {
+    searchQuery = searchInput.value;
+    applyFilters();
+  });
+
+  applyFilters();
+})();
+</script>
 </body>
 </html>
