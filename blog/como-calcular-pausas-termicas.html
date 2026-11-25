@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied',
+      ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+  </script>
+  <script src="/consent.js" defer></script>
+  <script src="/gtm.js"></script>
+  <script src="/tracking.js" defer></script>
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1348559673368085');
+  fbq('track','PageView');
+  </script>
+  <script src="/meta-pixel.js" defer></script>
+
+  <title>Como Calcular as Pausas Térmicas Corretamente em Frigoríficos | Blog VORTEX</title>
+  <meta name="description" content="Guia prático e definitivo para calcular pausas térmicas em frigoríficos: regra do Art. 253 CLT, quantas pausas por turno, pausas pagas, NR-36 e os erros mais comuns." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://vortexid.com.br/blog/como-calcular-pausas-termicas" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type"        content="article" />
+  <meta property="og:title"       content="Como Calcular as Pausas Térmicas Corretamente em Frigoríficos | Blog VORTEX" />
+  <meta property="og:description" content="Guia prático para calcular pausas térmicas: regra Art. 253 CLT, quantas pausas por turno e os erros mais comuns que geram passivo trabalhista." />
+  <meta property="og:url"         content="https://vortexid.com.br/blog/como-calcular-pausas-termicas" />
+  <meta property="og:image"       content="https://vortexid.com.br/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Como Calcular as Pausas Térmicas Corretamente em Frigoríficos",
+    "description": "Guia prático e definitivo para calcular pausas térmicas em frigoríficos: regra do Art. 253 CLT, quantas pausas por turno, pausas pagas, NR-36 e os erros mais comuns.",
+    "datePublished": "2026-05-05",
+    "dateModified":  "2026-05-05",
+    "author": { "@type": "Organization", "name": "VORTEX — Grupo PBC TECH" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "VORTEX",
+      "logo": { "@type": "ImageObject", "url": "https://vortexid.com.br/logo.png" }
+    },
+    "url": "https://vortexid.com.br/blog/como-calcular-pausas-termicas",
+    "mainEntityOfPage": "https://vortexid.com.br/blog/como-calcular-pausas-termicas",
+    "keywords": "calcular pausas térmicas, Art. 253 CLT, NR-36, frigorífico, pausa paga, turno 8 horas"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root { --teal:#E87722; --silver:#AAAAAA; --black:#111524; --dark:#1A1F3C; --card:#1F2548; --border:rgba(232,119,34,0.18); --gray:#8FA0C0; --white:#F0F4FF; }
+    body { font-family:'Space Grotesk',sans-serif; background:var(--black); color:var(--white); line-height:1.7; }
+    a { color:var(--teal); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(17,21,36,0.93); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:70px; }
+    .nav-logo { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:0.1em; color:var(--white); text-decoration:none; }
+    .nav-logo img { height:46px; width:auto; mix-blend-mode:screen; }
+    .nav-links { display:flex; align-items:center; gap:28px; }
+    .nav-links a { font-size:0.85rem; color:var(--gray); font-weight:500; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--white); text-decoration:none; }
+    .nav-links a.active { color:var(--teal); }
+    .nav-cta { background:var(--teal); color:#000 !important; font-weight:700 !important; font-size:0.82rem !important; padding:9px 20px; border-radius:8px; letter-spacing:0.04em; }
+    .nav-cta:hover { opacity:0.9; }
+    @media(max-width:640px){ .nav-links { gap:14px; } .nav-links a:not(.nav-cta):not(.active) { display:none; } }
+    .breadcrumb { font-size:0.75rem; color:var(--gray); margin-bottom:16px; }
+    .breadcrumb a { color:var(--gray); }
+    .breadcrumb a:hover { color:var(--teal); }
+    .breadcrumb span { color:var(--teal); }
+    article { max-width:740px; margin:0 auto; padding:110px 24px 80px; }
+    .art-tag { font-size:0.65rem; font-weight:700; letter-spacing:0.18em; color:var(--teal); text-transform:uppercase; margin-bottom:10px; }
+    .art-meta { font-size:0.78rem; color:var(--gray); margin-bottom:24px; }
+    h1 { font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:700; line-height:1.25; margin-bottom:20px; }
+    .art-intro { font-size:1.05rem; color:rgba(240,244,255,0.75); margin-bottom:40px; padding-bottom:32px; border-bottom:1px solid var(--border); }
+    h2 { font-size:1.2rem; font-weight:700; color:var(--teal); margin:40px 0 14px; }
+    h3 { font-size:0.98rem; font-weight:700; margin:28px 0 10px; color:var(--white); }
+    p { margin-bottom:18px; color:rgba(240,244,255,0.85); }
+    ul, ol { padding-left:22px; margin-bottom:18px; color:rgba(240,244,255,0.85); }
+    li { margin-bottom:8px; }
+    blockquote { border-left:3px solid var(--teal); padding:12px 20px; background:rgba(232,119,34,0.05); border-radius:0 8px 8px 0; margin:24px 0; color:rgba(240,244,255,0.7); font-style:italic; }
+    .highlight-box { background:var(--card); border-left:3px solid var(--teal); border-radius:0 10px 10px 0; padding:20px 24px; margin:28px 0; }
+    .highlight-box strong { color:var(--teal); }
+    .warn-box { background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.25); border-radius:12px; padding:20px 24px; margin:28px 0; }
+    .warn-box strong { color:#f87171; }
+    .formula-box { background:var(--dark); border:1px solid rgba(232,119,34,0.4); border-radius:12px; padding:24px; margin:28px 0; text-align:center; }
+    .formula-box .formula { font-size:1.1rem; font-weight:600; color:var(--teal); margin-bottom:8px; }
+    .formula-box .formula-note { font-size:0.82rem; color:var(--gray); }
+    table { width:100%; border-collapse:collapse; margin:24px 0; font-size:0.88rem; }
+    th { background:var(--card); color:var(--teal); padding:10px 14px; text-align:left; font-weight:600; border-bottom:1px solid var(--border); }
+    td { padding:10px 14px; border-bottom:1px solid rgba(232,119,34,0.08); color:rgba(240,244,255,0.8); }
+    td.highlight { color:var(--teal); font-weight:600; }
+    tr:last-child td { border-bottom:none; }
+    .cta-box { background:linear-gradient(135deg,rgba(232,119,34,0.1),rgba(232,119,34,0.04)); border:1px solid rgba(232,119,34,0.3); border-radius:16px; padding:32px; text-align:center; margin:52px 0 0; }
+    .cta-box h3 { font-size:1.2rem; margin:0 0 12px; color:var(--white); }
+    .cta-box p { color:var(--gray); margin-bottom:20px; }
+    .cta-btn { display:inline-block; background:var(--teal); color:#000; font-weight:700; font-size:0.88rem; padding:13px 30px; border-radius:8px; letter-spacing:0.06em; }
+    .cta-btn:hover { opacity:0.9; text-decoration:none; }
+    .blog-nav { display:flex; justify-content:space-between; gap:16px; margin-top:56px; padding-top:32px; border-top:1px solid var(--border); }
+    .blog-nav a { font-size:0.82rem; color:var(--gray); }
+    .blog-nav a:hover { color:var(--teal); }
+    footer { text-align:center; padding:40px 24px; border-top:1px solid var(--border); color:var(--gray); font-size:0.8rem; margin-top:40px; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo"><img src="/logo.png" alt="VORTEX" height="46" /></a>
+  <div class="nav-links">
+    <a href="/#como-funciona">Como Funciona</a>
+    <a href="/#funcionalidades">NR-36</a>
+    <a href="/blog/" class="active">Blog</a>
+    <a href="/#demo" class="nav-cta">Agendar Demo</a>
+  </div>
+</nav>
+
+<article itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="breadcrumb"><a href="/blog/">Blog</a> › <span>Prático</span></div>
+  <div class="art-tag">Prático · 10 min leitura</div>
+  <div class="art-meta">
+    <time itemprop="datePublished" datetime="2026-05-05">5 de maio de 2026</time> · Por <span itemprop="author">Equipe VORTEX</span>
+  </div>
+
+  <h1 itemprop="headline">Como Calcular as Pausas Térmicas Corretamente em Frigoríficos</h1>
+
+  <p class="art-intro" itemprop="description">
+    "Quantas pausas térmicas meu trabalhador tem direito por turno?" é uma das perguntas mais frequentes — e a resposta errada mais cara — do setor de frigoríficos. Este guia prático detalha o cálculo correto com base no Art. 253 da CLT e NR-36, incluindo os cenários mistos e os erros que geram passivo trabalhista milionário.
+  </p>
+
+  <h2>A Regra Base: Art. 253 da CLT</h2>
+  <p>A obrigação de pausas térmicas em frigoríficos tem origem no <strong>Art. 253 da Consolidação das Leis do Trabalho (CLT)</strong>, que estabelece:</p>
+
+  <blockquote>"Para os empregados que trabalham em câmaras frias e para os que movimentam mercadorias do ambiente quente ou normal para o frio e vice-versa, depois de 1 hora e 40 minutos de trabalho contínuo, será assegurado um período de 20 minutos de repouso, computado esse intervalo como de trabalho efetivo."</blockquote>
+
+  <div class="formula-box">
+    <div class="formula">A cada 100 minutos (1h40) de trabalho contínuo em frio → 20 minutos de pausa obrigatória</div>
+    <div class="formula-note">Base legal: Art. 253 CLT · Complementado por: NR-36 + NR-15 Anexo 9</div>
+  </div>
+
+  <p>Duas informações críticas nesse texto legal que muitas empresas ignoram:</p>
+  <ol>
+    <li><strong>"Computado esse intervalo como de trabalho efetivo"</strong> — as pausas térmicas são PAGAS. Não são descontadas do contracheque. O trabalhador recebe normalmente durante a pausa.</li>
+    <li><strong>"Trabalho contínuo"</strong> — a contagem é de exposição contínua ao ambiente frio. Uma saída breve e retorno imediato não reseta o contador (ver mais adiante).</li>
+  </ol>
+
+  <h2>Calculando as Pausas no Turno Padrão de 8 Horas</h2>
+  <p>Vamos aplicar a regra a um turno padrão de 8 horas (480 minutos) com 1 hora de intervalo de almoço:</p>
+
+  <div class="highlight-box">
+    <strong>Passo a passo do cálculo para turno de 8h:</strong><br/><br/>
+    1. Duração total do turno: 480 minutos<br/>
+    2. Deduzir o intervalo de almoço (não computado como trabalho): −60 min<br/>
+    3. Tempo líquido de trabalho: 420 minutos<br/>
+    4. Dividir pelo ciclo de exposição: 420 ÷ 100 = 4,2 ciclos<br/>
+    5. Arredondar para baixo (apenas ciclos completos geram pausa): 4 pausas<br/>
+    6. Duração de cada pausa: 20 minutos<br/>
+    7. <strong>Total de pausas térmicas no turno de 8h: 4 pausas × 20 min = 80 minutos</strong>
+  </div>
+
+  <p>Esses 80 minutos de pausas térmicas são <strong>computados como trabalho efetivo</strong>. Isso significa que numa escala de 8 horas, o trabalhador tem direito a aproximadamente 1h20 de pausa térmica paga, além do intervalo de almoço.</p>
+
+  <h2>Exemplo de Grade de Horários: Turno 06h às 14h</h2>
+  <p>Veja como fica o turno na prática com pausas corretamente distribuídas:</p>
+  <table>
+    <thead>
+      <tr><th>Horário</th><th>Atividade</th><th>Duração</th><th>Contador de Exposição</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>06:00</td><td>Início do turno na câmara</td><td>—</td><td>Inicia (0 min)</td></tr>
+      <tr><td>07:40</td><td class="highlight">1ª Pausa Térmica</td><td class="highlight">20 min</td><td>Reset (100 min atingidos)</td></tr>
+      <tr><td>08:00</td><td>Retorno à câmara</td><td>—</td><td>Reinicia (0 min)</td></tr>
+      <tr><td>09:40</td><td class="highlight">2ª Pausa Térmica</td><td class="highlight">20 min</td><td>Reset (100 min atingidos)</td></tr>
+      <tr><td>10:00</td><td>Retorno à câmara</td><td>—</td><td>Reinicia (0 min)</td></tr>
+      <tr><td>11:00</td><td>Intervalo de almoço (60 min)</td><td>60 min</td><td>Reseta (pausa longa)</td></tr>
+      <tr><td>12:00</td><td>Retorno à câmara</td><td>—</td><td>Reinicia (0 min)</td></tr>
+      <tr><td>13:40</td><td class="highlight">3ª Pausa Térmica</td><td class="highlight">20 min</td><td>Reset (100 min atingidos)</td></tr>
+      <tr><td>14:00</td><td>Fim do turno</td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p><em>Nota: O exemplo acima resulta em 3 pausas, pois o intervalo de almoço quebra o período de exposição contínua. Em turnos sem intervalo de almoço ou com almoço menor que 20 minutos, o cálculo pode resultar em 4 pausas completas.</em></p>
+
+  <h2>O Almoço Não É Pausa Térmica: Um Erro Muito Comum</h2>
+  <p>Um dos equívocos mais frequentes — e mais custosos — é contabilizar o intervalo de almoço como uma das pausas térmicas do turno. São institutos jurídicos completamente distintos:</p>
+
+  <div class="warn-box">
+    <strong>ERRADO — Prática ilegal frequente:</strong><br/>
+    "O trabalhador tem 1 hora de almoço mais 3 pausas de 20 min. Vou contar o almoço como pausa e dar só 2 pausas de 20 min."<br/><br/>
+    O almoço é o intervalo intrajornada obrigatório do Art. 71 da CLT. As pausas térmicas são direito autônomo do Art. 253. Um não substitui o outro — o trabalhador tem direito a ambos, e a Súmula 437 do TST confirma que qualquer supressão de pausa gera hora extra.
+  </div>
+
+  <div class="warn-box">
+    <strong>ERRADO — Combinação ilegal de pausas:</strong><br/>
+    "Vou dar uma pausa de 40 min de duas em duas horas para juntar 2 pausas de 20 min."<br/><br/>
+    A regra é de exposição contínua. Após 100 minutos contínuos no frio, o trabalhador tem direito à pausa imediata. Não é possível "acumular" pausas ou dar pausa dupla mais tarde para compensar. O direito nasce no momento em que os 100 minutos são atingidos.
+  </div>
+
+  <h2>Ambientes Muito Frios: Abaixo de −10°C</h2>
+  <p>Para câmaras de congelamento profundo (abaixo de −10°C), a NR-36 pode exigir limites mais curtos de exposição contínua do que os 100 minutos padrão. A avaliação deve ser feita por engenheiro de segurança do trabalho com análise específica do ambiente, considerando:</p>
+  <ul>
+    <li>Temperatura efetiva do ambiente</li>
+    <li>Velocidade do ar (que amplifica o efeito do frio)</li>
+    <li>Natureza da atividade (esforço físico aumenta a perda de calor)</li>
+    <li>EPIs disponíveis e sua eficiência de isolamento</li>
+  </ul>
+
+  <h2>Trabalhadores que Alternam entre Setores Quente e Frio</h2>
+  <p>Uma situação comum em frigoríficos é o trabalhador que alterna entre a câmara fria e uma área de processamento em temperatura ambiente ou aquecida. A regra é:</p>
+  <ul>
+    <li><strong>A contagem de exposição contínua ao frio é resetada apenas com pausas de pelo menos 20 minutos fora da câmara</strong></li>
+    <li>Uma saída de 5 minutos para buscar material e retorno imediato <strong>não</strong> reseta o contador</li>
+    <li>O parâmetro é a exposição cumulativa dentro do período de 1h40 — não apenas o último bloco contínuo</li>
+    <li>Para trabalhadores que alternam frequentemente, recomenda-se consulta a engenheiro de segurança para definir o critério de contagem aplicável à operação específica</li>
+  </ul>
+
+  <h2>Pausas NR-36 Psicofisiológicas: São Diferentes</h2>
+  <p>Além das pausas térmicas do Art. 253, a NR-36 estabelece pausas psicofisiológicas específicas para trabalhadores em frigoríficos, relacionadas à natureza repetitiva e postural do trabalho. Estas pausas:</p>
+  <ul>
+    <li>Têm duração e frequência definidas na própria NR-36 (varia conforme a atividade)</li>
+    <li>São <strong>adicionais</strong> às pausas térmicas — não se confundem nem se substituem</li>
+    <li>Também são computadas como tempo de trabalho efetivo</li>
+    <li>Devem ser registradas separadamente das pausas térmicas nos controles da empresa</li>
+  </ul>
+
+  <div class="highlight-box">
+    <strong>Base regulatória completa para pausas em frigoríficos:</strong><br/>
+    • Art. 253 CLT — pausas térmicas (20 min a cada 100 min em frio)<br/>
+    • NR-36 — pausas psicofisiológicas adicionais + critérios de alternância<br/>
+    • NR-15, Anexo 9 — definição de ambiente frio e obrigações de EPI<br/>
+    • Súmula 437 TST — consequência financeira de pausas não concedidas
+  </div>
+
+  <h2>Os Erros Mais Comuns no Cálculo — e Suas Consequências</h2>
+  <table>
+    <thead>
+      <tr><th>Erro</th><th>Consequência jurídica</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Contar o almoço como pausa térmica</td><td>Passivo de horas extras + multa MTE</td></tr>
+      <tr><td>Dar pausas de 15 min (5 min a menos)</td><td>Pausa considera não concedida = hora extra pelo período integral (Súmula 437)</td></tr>
+      <tr><td>Pular pausas em dias de alta produção</td><td>Passivo trabalhista por cada turno sem pausa</td></tr>
+      <tr><td>Não computar exposição parcial no cálculo</td><td>Trabalhador pode acumular mais de 100 min sem que o sistema perceba</td></tr>
+      <tr><td>Não registrar as pausas individualmente</td><td>Empresa não consegue provar conformidade em auditoria ou processo</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Conclusão: Cálculo Correto + Registro Correto = Zero Passivo</h2>
+  <p>O cálculo das pausas térmicas não é complicado — mas exige atenção aos detalhes regulatórios que muitas empresas desconhecem. E mesmo quando o cálculo está correto, sem um sistema de registro adequado, a empresa não consegue provar a conformidade.</p>
+  <p>A combinação ideal é: saber o cálculo correto + ter um sistema que aplique esse cálculo automaticamente + gerar evidência digital de cada pausa para fins de auditoria e defesa em processos trabalhistas.</p>
+
+  <div class="cta-box">
+    <h3>Deixe o sistema calcular automaticamente</h3>
+    <p>O VORTEX aplica as regras do Art. 253 CLT e NR-36 automaticamente, alerta supervisores antes que a pausa seja perdida e registra cada evento com validade jurídica. Sem cálculo manual, sem erro humano.</p>
+    <a href="/#demo" class="cta-btn">VER DEMONSTRAÇÃO GRATUITA</a>
+  </div>
+
+  <div class="blog-nav">
+    <a href="/blog/">← Todos os artigos</a>
+    <a href="/#demo">Falar com especialista →</a>
+  </div>
+</article>
+
+<footer>
+  <p>© 2026 VORTEX — Grupo PBC TECH · Brasil RFID · <a href="/" style="color:var(--teal);">vortexid.com.br</a> · <a href="/privacidade" style="color:var(--gray);">Privacidade</a> · <a href="#" data-consent-prefs style="color:var(--gray);">Cookies</a></p>
+</footer>
+</body>
+</html>
