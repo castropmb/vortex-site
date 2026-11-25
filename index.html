@@ -95,6 +95,7 @@
       --white: #F0F4FF;
       --gray: #8FA0C0;
       --light: #B8C8E8;
+      --silver: #AAAAAA;
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Space Grotesk', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; line-height: 1.6; }
@@ -157,7 +158,9 @@
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .logo-svg { width: 30px; height: 30px; }
-    .nav-logo-text { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.12em; color: var(--white); }
+    .nav-logo-text { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.12em; }
+    .nav-logo-vor { color: var(--teal); }
+    .nav-logo-tex { color: var(--silver); }
     .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
     .nav-links a { color: var(--gray); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.07em; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--teal); }
@@ -512,16 +515,10 @@
 <nav id="mainNav">
   <a href="#inicio" class="nav-logo">
     <svg class="logo-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="nvg" x1="2" y1="3" x2="34" y2="33" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="55%" stop-color="#E87722"/>
-          <stop offset="100%" stop-color="#C0611A"/>
-        </linearGradient>
-      </defs>
-      <path d="M3,4 L18,32 L33,4" stroke="url(#nvg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M2,4 L16,32 L30,4" stroke="#AAAAAA" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6,4 L20,32 L34,4" stroke="#E87722" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    <span class="nav-logo-text">VORTEX</span>
+    <span class="nav-logo-text"><span class="nav-logo-vor">VOR</span><span class="nav-logo-tex">TEX</span></span>
   </a>
   <ul class="nav-links">
     <li><a href="#como-funciona">Como Funciona</a></li>
@@ -556,19 +553,21 @@
         <div class="logo-3d-img-wrap" id="logo3dWrap">
           <svg class="logo-hero-svg" viewBox="0 0 200 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VORTEX — Intelligent Break Management">
             <defs>
-              <linearGradient id="hvg" x1="14" y1="12" x2="186" y2="148" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="48%" stop-color="#E87722"/>
-                <stop offset="100%" stop-color="#C0611A"/>
-              </linearGradient>
               <filter id="hglow" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="4" result="blur"/>
+                <feGaussianBlur stdDeviation="5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="hglow2" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
                 <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
             </defs>
-            <path d="M14,12 L100,158 L186,12" stroke="url(#hvg)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" filter="url(#hglow)"/>
-            <text x="100" y="190" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="22" letter-spacing="8" fill="#E87722">VORTEX</text>
-            <text x="100" y="208" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="400" font-size="7" letter-spacing="3.5" fill="rgba(232,119,34,0.45)">INTELLIGENT BREAK MANAGEMENT</text>
+            <!-- Gray V (back, offset left) -->
+            <path d="M6,12 L84,158 L162,12" stroke="#AAAAAA" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" filter="url(#hglow2)" opacity="0.9"/>
+            <!-- Orange V (front, offset right) -->
+            <path d="M38,12 L116,158 L194,12" stroke="#E87722" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" filter="url(#hglow)"/>
+            <text x="100" y="192" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="22" letter-spacing="6"><tspan fill="#E87722">VOR</tspan><tspan fill="#AAAAAA">TEX</tspan></text>
+            <text x="100" y="210" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="400" font-size="7" letter-spacing="3.5" fill="rgba(170,170,170,0.5)">INTELLIGENT BREAK MANAGEMENT</text>
           </svg>
         </div>
       </div>
@@ -1454,16 +1453,10 @@
       <div class="footer-brand">
         <a href="#inicio" class="nav-logo">
           <svg style="height:32px;width:auto;" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="fvg" x1="2" y1="3" x2="34" y2="33" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="55%" stop-color="#E87722"/>
-                <stop offset="100%" stop-color="#C0611A"/>
-              </linearGradient>
-            </defs>
-            <path d="M3,4 L18,32 L33,4" stroke="url(#fvg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2,4 L16,32 L30,4" stroke="#AAAAAA" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6,4 L20,32 L34,4" stroke="#E87722" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="nav-logo-text">VORTEX</span>
+          <span class="nav-logo-text"><span class="nav-logo-vor">VOR</span><span class="nav-logo-tex">TEX</span></span>
         </a>
         <p>Intelligent Break Management. Controle automatizado de pausas térmicas com RFID. Uma empresa do Grupo PBC TECH — Brasil RFID.</p>
         <div class="footer-social">
