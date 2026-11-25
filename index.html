@@ -26,9 +26,10 @@
 
   <title>VORTEX — Intelligent Break Management | Controle de Pausas RFID</title>
   <meta name="description" content="VORTEX: controle automatizado de pausas térmicas com RFID. Conformidade NR-36, validade jurídica, ROI comprovado. Empresa do Grupo PBC TECH — Brasil RFID." />
-  <!-- Favicon SVG -->
+  <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <link rel="icon" href="/logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
 
   <!-- SEO -->
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -514,11 +515,7 @@
 <!-- NAV -->
 <nav id="mainNav">
   <a href="#inicio" class="nav-logo">
-    <svg class="logo-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M2,4 L16,32 L30,4" stroke="#AAAAAA" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M6,4 L20,32 L34,4" stroke="#E87722" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    <span class="nav-logo-text"><span class="nav-logo-vor">VOR</span><span class="nav-logo-tex">TEX</span></span>
+    <img src="/logo.png" alt="VORTEX" style="height:46px;width:auto;">
   </a>
   <ul class="nav-links">
     <li><a href="#como-funciona">Como Funciona</a></li>
@@ -551,24 +548,7 @@
         <div class="logo-3d-orb o3"></div>
         <div class="logo-3d-pulse"></div>
         <div class="logo-3d-img-wrap" id="logo3dWrap">
-          <svg class="logo-hero-svg" viewBox="0 0 200 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VORTEX — Intelligent Break Management">
-            <defs>
-              <filter id="hglow" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="5" result="blur"/>
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-              <filter id="hglow2" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="3" result="blur"/>
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-            <!-- Gray V (back, offset left) -->
-            <path d="M6,12 L84,158 L162,12" stroke="#AAAAAA" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" filter="url(#hglow2)" opacity="0.9"/>
-            <!-- Orange V (front, offset right) -->
-            <path d="M38,12 L116,158 L194,12" stroke="#E87722" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" filter="url(#hglow)"/>
-            <text x="100" y="192" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="22" letter-spacing="6"><tspan fill="#E87722">VOR</tspan><tspan fill="#AAAAAA">TEX</tspan></text>
-            <text x="100" y="210" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="400" font-size="7" letter-spacing="3.5" fill="rgba(170,170,170,0.5)">INTELLIGENT BREAK MANAGEMENT</text>
-          </svg>
+          <img src="/logo.png" alt="VORTEX — Intelligent Break Management" class="logo-hero-svg">
         </div>
       </div>
       <h1>Pausas sob controle.<br><em>Conformidade total.</em><br>Sem papel.</h1>
@@ -1024,8 +1004,8 @@
   .logo-3d-pulse{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(232,119,34,0.14) 0%,transparent 70%);animation:logoPulse 3s ease-in-out infinite;z-index:1;pointer-events:none;}
   @keyframes logoPulse{0%,100%{transform:scale(1);opacity:0.6;}50%{transform:scale(1.18);opacity:1;}}
   .logo-3d-img-wrap{position:relative;z-index:2;width:220px;height:250px;display:flex;align-items:center;justify-content:center;animation:logo3dFloat 6s ease-in-out infinite;transform-style:preserve-3d;}
-  .logo-hero-svg{width:200px;height:auto;filter:drop-shadow(0 0 20px rgba(232,119,34,0.65));transition:filter 0.2s;}
-  .logo-hero-3d-outer:hover .logo-hero-svg{filter:drop-shadow(0 0 36px rgba(232,119,34,0.95));}
+  .logo-hero-svg{width:220px;height:auto;filter:drop-shadow(0 0 24px rgba(232,119,34,0.5));transition:filter 0.2s;}
+  .logo-hero-3d-outer:hover .logo-hero-svg{filter:drop-shadow(0 0 40px rgba(232,119,34,0.8));}
   @keyframes logo3dFloat{
     0%   {transform:perspective(700px) rotateX(0deg)  rotateY(0deg)   translateY(0px);}
     20%  {transform:perspective(700px) rotateX(5deg)  rotateY(-10deg) translateY(-7px);}
@@ -1452,11 +1432,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <a href="#inicio" class="nav-logo">
-          <svg style="height:32px;width:auto;" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M2,4 L16,32 L30,4" stroke="#AAAAAA" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6,4 L20,32 L34,4" stroke="#E87722" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="nav-logo-text"><span class="nav-logo-vor">VOR</span><span class="nav-logo-tex">TEX</span></span>
+          <img src="/logo.png" alt="VORTEX" style="height:46px;width:auto;">
         </a>
         <p>Intelligent Break Management. Controle automatizado de pausas térmicas com RFID. Uma empresa do Grupo PBC TECH — Brasil RFID.</p>
         <div class="footer-social">
